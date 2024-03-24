@@ -12,6 +12,7 @@ Role 5: Develop data persistence solutions and test cases.
 
 Additionally, your project will need to have a README document. This document will include the following in order:
 
+DOCUMENTATION:
 README should have:
 Instructions on how to compile and run your project. 
 A list of who submitted which parts of the assignment on Brightspace and Vocareum. 
