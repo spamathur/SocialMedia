@@ -67,7 +67,7 @@ public interface UserManager {
     then return the User[]. Think about how you want to implement this method. Also, when constructing
     the Users to put in the list use the constructor that does not contain the password field for security.
      */
-    public static User[] searchUsers(String searchString) throws LoginFailedException {
+    public static User[] searchUsers(String searchString) throws LoginFailedException, UserNotFoundException {
         ArrayList<User> users = new ArrayList<>();
         try (BufferedReader br = new BufferedReader(new FileReader("Users.txt"))) {
             String line;
@@ -89,7 +89,7 @@ public interface UserManager {
         
         // If no ones found
         if (users.size() == 0) {
-            throw new LoginFailedException("No results found"); // We can make a new exception for this if you want
+            throw new UserNotFoundException("No results found"); // We can make a new exception for this if you want
         }
         return users.toArray(new User[0]); // Converts the arraylist to an array and returns the first name in the list
     }
