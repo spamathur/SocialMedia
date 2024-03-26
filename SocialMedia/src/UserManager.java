@@ -37,8 +37,27 @@ public interface UserManager {
     failed exception. If it works return the User and construct this user with firstname lastname and username not password. (for security)
      */
     public static User login(String userName, String password) throws LoginFailedException {
-        return null;
-    }
+        try (BufferedReader br = new BufferedReader(new FileReader("Users.txt"))) {
+            String line;
+
+            while ((line = br.readLine()) != null) {
+                String[] parts = line.split(",");
+
+                String fUsername = parts[0];
+                String fPassword = parts[1];
+                String fFirst = parts[2];
+                String fLast = parts[3];
+
+                if (userName.equals(fUsername) && password.equals(fPassword)) {
+                    return new User(fUsername, fFirst, fLast);
+                }
+
+            } // End while
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        throw new LoginFailedException("Incorrect Username and password!"); // Throws if it does not return on line 52
+    } // End method
 
 
 
