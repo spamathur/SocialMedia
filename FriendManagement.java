@@ -2,6 +2,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class FriendManagement {
+    //parameters may change
     
     public ArrayList<String> searchFriends(String friendList) { //displays friend list
         ArrayList<String> friends = new ArrayList<>();
