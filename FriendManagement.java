@@ -2,7 +2,7 @@ import java.io.*;
 import java.util.ArrayList;
 
 public class FriendManagement {
-    ArrayList<String> friends = new ArrayList<>();
+    ArrayList<String> friends = new ArrayList<>(); //list of all the user's current friends
 
     public void addFriend(String username, String friendList) {
         boolean friendExists = false;
