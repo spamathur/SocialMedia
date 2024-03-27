@@ -5,10 +5,10 @@ import java.util.ArrayList;
 public interface UserManager {
 
 
-    public static User signup(User user) throws UsernameTakenException {
+    public static User signup(User user, String filename) throws UsernameTakenException {
 
-        try (BufferedReader bfr = new BufferedReader(new FileReader("Users.txt"));
-             PrintWriter pw = new PrintWriter(new FileWriter("Users.txt", true))) {
+        try (BufferedReader bfr = new BufferedReader(new FileReader(filename));
+             PrintWriter pw = new PrintWriter(new FileWriter(filename, true))) {
 
             ArrayList<String> contents = new ArrayList<>();
             String line = bfr.readLine();
@@ -23,7 +23,8 @@ public interface UserManager {
                     throw new UsernameTakenException(String.format("%s is taken", user.getUserName()));
             }
 
-            pw.println(String.format("%s,%s,%s,%s", user.getUserName(), user.getPassword(), user.getFirstName(), user.getLastName()));
+            pw.println(String.format("%s,%s,%s,%s", user.getUserName(), user.getPassword(),
+                    user.getFirstName(), user.getLastName()));
 
         } catch (IOException e) {
             e.printStackTrace();
@@ -33,11 +34,13 @@ public interface UserManager {
 
 
 
-    /* This method should check if the username and password match our database Users.txt file. If it doesn't match throw login
-    failed exception. If it works return the User and construct this user with firstname lastname and username not password. (for security)
+    /* This method should check if the username and password match our database Users.txt file.
+    If it doesn't match throw login failed exception.
+    If it works return the User and construct this user with
+    firstname lastname and username not password. (for security)
      */
-    public static User login(String userName, String password) throws LoginFailedException {
-        try (BufferedReader br = new BufferedReader(new FileReader("Users.txt"))) {
+    public static User login(String userName, String password, String filename) throws LoginFailedException {
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
 
             while ((line = br.readLine()) != null) {
@@ -67,9 +70,9 @@ public interface UserManager {
     then return the User[]. Think about how you want to implement this method. Also, when constructing
     the Users to put in the list use the constructor that does not contain the password field for security.
      */
-    public static User[] searchUsers(String searchString) throws LoginFailedException, UserNotFoundException {
+    public static User[] searchUsers(String searchString, String filename) throws LoginFailedException, UserNotFoundException {
         ArrayList<User> users = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("Users.txt"))) {
+        try (BufferedReader br = new BufferedReader(new FileReader("filename"))) {
             String line;
 
             while ((line = br.readLine()) != null) {
