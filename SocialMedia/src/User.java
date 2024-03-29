@@ -57,4 +57,8 @@ public class User {
         }
         return false;
     }
+
+    public String toString () {
+        return ("%s,%s,%s,%s", userName, password, firstName, lastName);
+    }
 }
