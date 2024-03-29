@@ -1,139 +1,118 @@
+import java.awt.color.ICC_ColorSpace;
 import java.io.*;
 import java.util.ArrayList;
 
 public class FriendManagement {
-    //parameters may change
-    
-    public ArrayList<String> searchFriends(String friendList) { //displays friend list
-        ArrayList<String> friends = new ArrayList<>();
-        try {
-            BufferedReader bfr = new BufferedReader(new FileReader(friendList));
-            String line = "";
-            while ((line = bfr.readLine()) != null) {
-                friends.add(line);
-            }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-        return friends; //returns all current friends, can potentially write results to a file, depends on what we want
+
+    private ArrayList<String> friends; //friend list
+    private ArrayList<String> blocked; //block list
+    private String username; //the way i have this rn, this username is the other user; not "us", might distinguish later
+    private String friendList; //friend list file name
+    private String blockList; //block list file name
+
+
+    ///use a synchronized obj for all methods?
+    //parameters may change, like the file name strings
+
+    public FriendManagement(String username, String friendList, String blockList) { //constructor?
+        this.username = username;
+        this.friendList = friendList;
+        this.blockList = blockList;
+        this.friends = new ArrayList<>();
+        this.blocked = new ArrayList<>();
     }
 
 
-    public boolean friended(String username, String friendList) { //check if friends
+    public void readFriends() { //initialize friend array with 'current' friends
+        ArrayList<String> temp = new ArrayList<>();
         try {
-            BufferedReader bfr = new BufferedReader(new FileReader(friendList));
+            BufferedReader bfr = new BufferedReader(new FileReader(friendList)); //reads friend list file
             String line = "";
             while ((line = bfr.readLine()) != null) {
-                if (line.equals(username)) {
-                    return true;
-                }
+                temp.add(line); //add to temp array
             }
             bfr.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return false;
+
+        friends.clear();
+        friends.addAll(temp);
     }
 
-    public boolean blocked(String username, String blockList) { //check if blocked
+
+    public void readBlocked() { //initialize blocked array
+        ArrayList<String> temp = new ArrayList<>();
         try {
-            BufferedReader bfr = new BufferedReader(new FileReader(blockList));
+            BufferedReader bfr = new BufferedReader(new FileReader(blockList)); //reads blocked list file
             String line = "";
             while ((line = bfr.readLine()) != null) {
-                if (line.equals(username)) {
-                    return true;
-                }
+                temp.add(line); //add to temp array
             }
             bfr.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return false;
+
+        blocked.clear();
+        blocked.addAll(temp);
     }
 
 
-    public void addFriend(String username, String friendList) {
-        try {
-            if (!friended(username, friendList)) { //if not friends
-                PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(friendList, true)));
-                pw.println(username); //add friend to list
-            }
+    public boolean friended(String username) { //check if friends
+        return friends.contains(username);
+    }
 
+    public void addFriend(String username) { //add friend ///maybe - check if the username exists to begin with
+        if (!friends.contains(username)) {
+            friends.add(username);
+        }
+    }
+
+    public void removeFriend(String username) { //remove friend
+        if (friends.contains(username)) {
+            friends.remove(username);
+        }
+    }
+
+    public boolean isBlocked(String username) { //check if blocked
+        return blocked.contains(username);
+    }
+
+    public void blocked(String username) { //block user
+        if (!blocked.contains(username)) {
+            blocked.add(username);
+        }
+    }
+
+    public void unBlockFriend(String username) { //unblocks user
+        if (blocked.contains(username)) {
+            blocked.remove(username);
+        }
+    }
+
+
+    public void writeFriendList() { //writes changes back to the file
+        try {
+            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(friendList)));
+            for (String friendedUser : friends) {
+                pw.println(friendedUser);
+            }
+            pw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
-    public void removeFriend(String username, String friendList) {
-        ArrayList<String> friend = new ArrayList<>();
+    public void writeBlockList() { //writes changes back to the file
         try {
-            BufferedReader bfr = new BufferedReader(new FileReader(friendList));
-            String line = "";
-            while ((line = bfr.readLine()) != null) {
-                friend.add(line); //get all the friends
+            PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(blockList)));
+            for (String blockedUser : blocked) {
+                pw.println(blockedUser);
             }
-            bfr.close();
-            if (friend.contains(username)) {
-                friend.remove(username); //if username is present in friends, remove them
-                PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(friendList)));
-                for (int i = 0; i < friend.size(); i++) {
-                    pw.println(friend.get(i)); //rewrite friends to the file after one is removed
-                }
-                pw.flush();
-                pw.close();
-
-            }
-
-        } catch (IOException e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    public void blockFriend(String username, String friendList, String blockList) {
-        try {
-            if (!blocked(username, blockList)) { //if the user is not on the blocklist
-                PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(blockList, true)));
-                pw.println(username); //block them
-                pw.flush();
-                pw.close();
-            }
-            if (friended(username, friendList)) { // if friended
-                removeFriend(username, friendList); //remove them from the friend list
-            }
+            pw.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
-    }
-
-    public void unblockFriend(String username, String blockList) {
-        try {
-            boolean blocked = false;
-            ArrayList<String> blockedFriends = new ArrayList<>();
-            BufferedReader bfr = new BufferedReader(new FileReader(blockList));
-            String line = "";
-            while ((line = bfr.readLine()) != null) {
-                blockedFriends.add(line); //list keeps track of all blocked users
-                if (line.equals(username)) { //see if user is blocked
-                    blocked = true;
-                }
-            }
-            bfr.close();
-            if (blocked) {
-                blockedFriends.remove(username); //if user is blocked, remove them from blocklist array
-                PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(blockList)));
-                for (int i = 0; i < blockedFriends.size(); i++) {
-                    pw.println(blockedFriends.get(i)); //rewrite all the blocked users to the blocked list file
-                }
-                pw.flush();
-                pw.close();
-
-
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
     }
 }
