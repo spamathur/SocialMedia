@@ -3,29 +3,37 @@ import java.util.ArrayList;
 
 /* ALL OF THE METHODS ARE STATIC SO YOU CAN IMPLEMENT THEM HERE ITSELF. I DID SIGNUP METHOD FOR YOU GUYS. */
 public interface UserManager {
-
-
-    public static User signup(User user, String filename) throws UsernameTakenException {
-
-        try (BufferedReader bfr = new BufferedReader(new FileReader(filename));
-             PrintWriter pw = new PrintWriter(new FileWriter(filename, true))) {
-
-            ArrayList<String> contents = new ArrayList<>();
+    public static ArrayList<User> readUsers(String filename) {
+        ArrayList<User> usersArray = new ArrayList<>();
+        try {
+            BufferedReader bfr = new BufferedReader(new FileReader(filename));
             String line = bfr.readLine();
             while (line != null) {
-                contents.add(line);
                 line = bfr.readLine();
+                String[] parts = line.split(",");
+                usersArray.add(new User(parts[0], parts[1], parts[2], parts[3]));
             }
-
-            for (String userInfo : contents) {
-                String username = userInfo.split(",")[0];
-                if (username.equals(user.getUserName()))
-                    throw new UsernameTakenException(String.format("%s is taken", user.getUserName()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return usersArray;
+    }
+    /*
+    I changed the parameters for the signup method. Former parameter is User. I think for our userManager file
+    we need to input the username, password, and the names directly, rather than input a User.\
+     */
+    public static User signup(String username, String password, String firstName, String lastName, String filename) throws UsernameTakenException {
+        ArrayList<User> users = readUsers(filename);
+        User user = new User(username, password, firstName, lastName);
+        for (User item : users) {
+            if (user.equals(item)) {
+                throw new UsernameTakenException(String.format("%s is taken", user.getUserName()));
             }
-
-            pw.println(String.format("%s,%s,%s,%s", user.getUserName(), user.getPassword(),
-                    user.getFirstName(), user.getLastName()));
-
+        }
+        try {
+            FileOutputStream fos = new FileOutputStream(filename, true);
+            PrintWriter pw = new PrintWriter(fos);
+            pw.println(user.toString());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -40,29 +48,14 @@ public interface UserManager {
     firstname lastname and username not password. (for security)
      */
     public static User login(String userName, String password, String filename) throws LoginFailedException {
-        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
-            String line;
-
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
-
-                String fUsername = parts[0];
-                String fPassword = parts[1];
-                String fFirst = parts[2];
-                String fLast = parts[3];
-
-                if (userName.equals(fUsername) && password.equals(fPassword)) {
-                    return new User(fUsername, fFirst, fLast);
-                }
-
-            } // End while
-        } catch (IOException e) {
-            e.printStackTrace();
+        ArrayList<User> users = readUsers(filename);
+        for (User item : users) {
+            if (item.getUserName().equals(userName) && item.getPassword().equals(password)) {
+                return item;
+            }
         }
-        throw new LoginFailedException("Incorrect Username and password!"); // Throws if it does not return on line 52
+        throw new LoginFailedException("Username or password is incorrect!");
     } // End method
-
-
 
 
 
@@ -70,31 +63,22 @@ public interface UserManager {
     then return the User[]. Think about how you want to implement this method. Also, when constructing
     the Users to put in the list use the constructor that does not contain the password field for security.
      */
-    public static User[] searchUsers(String searchString, String filename) throws LoginFailedException, UserNotFoundException {
-        ArrayList<User> users = new ArrayList<>();
-        try (BufferedReader br = new BufferedReader(new FileReader("filename"))) {
-            String line;
-
-            while ((line = br.readLine()) != null) {
-                String[] parts = line.split(",");
-
-                String fUsername = parts[0];
-                String fFirst = parts[2];
-                String fLast = parts[3];
-
-                if (fUsername.contains(searchString) || fFirst.contains(searchString) || fLast.contains(searchString)) {
-                   users.add(new User(fUsername, fFirst, fLast));  // adds that user to the ArrayList (Line 71)
-                }
-            } // End while
-        } catch (IOException e) {
-            e.printStackTrace();
+    public static User[] searchUsers(String searchString, String filename) throws LoginFailedException,
+            UserNotFoundException {
+        ArrayList<User> users = readUsers(filename);
+        ArrayList<User> searchUsers = new ArrayList<>();
+        for (User item : users) {
+            if (item.getUserName().contains(searchString) || item.getFirstName().contains(searchString) ||
+                    item.getLastName().contains(searchString)) {
+                searchUsers.add(new User(item.getUserName(), item.getFirstName(), item.getLastName()));
+            }
         }
-        
+
         // If no ones found
-        if (users.size() == 0) {
-            throw new UserNotFoundException("No results found"); // We can make a new exception for this if you want
+        if (searchUsers.size() == 0) {
+            throw new UserNotFoundException("No results found");
         }
-        return users.toArray(new User[0]); // Converts the arraylist to an array and returns the first name in the list
+        return searchUsers.toArray(new User[0]); // Converts the arraylist to an array and returns the first name
     }
 }
 
