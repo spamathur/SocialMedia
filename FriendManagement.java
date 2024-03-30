@@ -6,8 +6,10 @@ public class FriendManagement {
 
     private ArrayList<String> friends; //friend list
     private ArrayList<String> blocked; //block list
-    private String username; //the way i have this rn, this username is the other user; not "us"
+    private String username; //the way i have this rn, this username is the other user; not "us", might distinguish later
 
+
+    ///use a synchronized obj for all methods?
 
     public FriendManagement(String username) {
         this.username = username;
@@ -50,7 +52,7 @@ public class FriendManagement {
             BufferedReader bfr = new BufferedReader(new FileReader(username + "_friendlist.txt")); //reads friend list file
             String line = "";
             while ((line = bfr.readLine()) != null) {
-                temp.add(line); //add to temp array, not og array as it maybe changed
+                temp.add(line); //add to temp array, not og array as it may be changed
             }
             bfr.close();
         } catch (IOException e) {
@@ -87,12 +89,14 @@ public class FriendManagement {
     public synchronized void addFriend(String username) { //add friend ///maybe - check if the username exists to begin with
         if (!friends.contains(username)) {
             friends.add(username);
+            writeFriendList();
         }
     }
 
     public synchronized void removeFriend(String username) { //remove friend
         if (friends.contains(username)) {
             friends.remove(username);
+            writeFriendList();
         }
     }
 
@@ -103,15 +107,18 @@ public class FriendManagement {
     public synchronized void blocked(String username) { //block user
         if (friends.contains(username)) {
             friends.remove(username);
+            writeFriendList();
         }
         if (!blocked.contains(username)) {
             blocked.add(username);
+            writeBlockList();
         }
     }
 
     public synchronized void unBlockFriend(String username) { //unblocks user
         if (blocked.contains(username)) {
             blocked.remove(username);
+            writeBlockList();
         }
     }
 
