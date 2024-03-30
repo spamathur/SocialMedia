@@ -104,7 +104,7 @@ public class FriendManagement {
         return blocked.contains(username);
     }
 
-    public synchronized void blocked(String username) { //block user
+    public synchronized void blockUser(String username) { //block user
         if (friends.contains(username)) {
             friends.remove(username);
             writeFriendList();
@@ -115,7 +115,7 @@ public class FriendManagement {
         }
     }
 
-    public synchronized void unBlockFriend(String username) { //unblocks user
+    public synchronized void unBlockUser(String username) { //unblocks user
         if (blocked.contains(username)) {
             blocked.remove(username);
             writeBlockList();
