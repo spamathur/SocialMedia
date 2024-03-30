@@ -82,7 +82,7 @@ public class FriendManagement {
     }
 
 
-    public synchronized boolean friended(String username) { //check if friends
+    public synchronized boolean isFriended(String username) { //check if friends
         return friends.contains(username);
     }
 
