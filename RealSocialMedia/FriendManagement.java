@@ -6,10 +6,7 @@ public class FriendManagement {
 
     private ArrayList<String> friends; //friend list
     private ArrayList<String> blocked; //block list
-    private String username; //the way i have this rn, this username is the other user; not "us", might distinguish later
-
-
-    ///use a synchronized obj for all methods?
+    private String username;
 
     public FriendManagement(String username) {
         this.username = username;
@@ -63,6 +60,13 @@ public class FriendManagement {
         friends.addAll(temp);
     }
 
+    public synchronized ArrayList<String> returnFriends() { //returns friend list
+        return friends;
+    }
+
+    public synchronized ArrayList<String> returnBlocked() { //returns block list
+        return blocked;
+    }
 
     public synchronized void readBlocked() { //initialize blocked array
         ArrayList<String> temp = new ArrayList<>();
