@@ -46,6 +46,10 @@ public class User {
         hiddenPosts.add(post);
     }
 
+    public ArrayList<Post> getHiddenPosts() {
+        return hiddenPosts;
+    }
+
     public void addMyPosts(Post post) {
         myPosts.add(post);
     }
@@ -188,4 +192,3 @@ public class User {
 
         return String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s", userName, firstName, lastName, password, profilePic, friendsListString, blockedListString, myPostsString, hiddenPostsString);
     }
-}
