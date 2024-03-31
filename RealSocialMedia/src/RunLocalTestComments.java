@@ -4,20 +4,20 @@ import org.junit.runner.JUnitCore;
 import org.junit.runner.Result;
 import org.junit.runner.notification.Failure;
 
-import java.io.*;
 import java.lang.reflect.Modifier;
 
 
 /**
- * A framework to run public test cases for Comment functionality for PJ5.
+ * A framework to run public test cases for Comment.java for PJ5.
  *
  * @author Project 5 Team 3 Lab 27
  *
  * @version March 31, 2024
  */
 
-public class RunLocalTest {
+public class RunLocalTestComments {
 
+    // Main method to run the tests
     public static void main(String[] args) {
         Result result = JUnitCore.runClasses(TestCase.class);
         if (result.wasSuccessful()) {
@@ -30,8 +30,8 @@ public class RunLocalTest {
     }
 
     public static class TestCase {
-        private static final String INFILE = "comments.txt";
 
+        // Test to check if the initialization values are correct
         @Test(timeout = 1000)
         public void testCommentInitialization() {
             String creator = "creatorName";
@@ -47,6 +47,7 @@ public class RunLocalTest {
             Assert.assertEquals("Initial downvotes should be 0", 0, comment.getDownvotes());
         }
 
+        // Test to check if the Upvote and Downvote methods work as expected
         @Test(timeout = 1000)
         public void testUpvoteDownvote() {
             Comment comment = new Comment("creator", "content", "postAuthor");
@@ -58,6 +59,7 @@ public class RunLocalTest {
             Assert.assertEquals("Downvotes should increase by 1", 1, comment.getDownvotes());
         }
 
+        // Test to check if the setters work and if the getters to get those values work as well
         @Test(timeout = 1000)
         public void testSettersAndGetters() {
             Comment comment = new Comment("creator", "content", "postAuthor");
@@ -75,6 +77,7 @@ public class RunLocalTest {
             Assert.assertEquals("Downvotes should be updated", 3, comment.getDownvotes());
         }
 
+        // Test to check if the toString works as expected
         @Test(timeout = 1000)
         public void testToString() {
             Comment comment = new Comment("creator", "This is a test comment", "postAuthor");
@@ -82,6 +85,7 @@ public class RunLocalTest {
             Assert.assertEquals("toString should return the correct format", expected, comment.toString());
         }
 
+        // Test to ensure that the class is declared properly
         @Test(timeout = 1000)
         public void CommentClassDeclarationTest() {
             Class<?> clazz;
@@ -89,7 +93,7 @@ public class RunLocalTest {
             Class<?> superclass;
             Class<?>[] superinterfaces;
 
-            clazz = FoundationDatabase.class;
+            clazz = Comment.class;
 
             modifiers = clazz.getModifiers();
 
