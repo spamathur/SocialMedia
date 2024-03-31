@@ -7,6 +7,10 @@ public class CommentsManager {
     private static final String FILENAME = "comments.txt";
     private static List<Comment> commentsList = Collections.synchronizedList(new ArrayList<>());
 
+    public static List<Comment> getCommentsList() {
+        return commentsList;
+    }
+
     public static synchronized void deleteComment(String commentID){
         for (int i = 0; i < commentsList.size(); i++){
             if (commentsList.get(i).getCommentID().equals(commentID)){
