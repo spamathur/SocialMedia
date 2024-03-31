@@ -8,6 +8,7 @@ public class User {
     private ArrayList<String> friendsList = new ArrayList<>();
     private ArrayList<String> blockedList = new ArrayList<>();
     private ArrayList<Post> myPosts = new ArrayList<>();
+    private ArrayList<Post> hiddenPosts = new ArrayList<>();
 
     public User(String userName, String firstName, String lastName, String password, String profilePic) {
         this.userName = userName;
@@ -17,38 +18,43 @@ public class User {
         this.profilePic = profilePic;
     }
 
-    public void addFriend(String username){
+    public void addFriend(String username) {
         friendsList.add(username);
     }
 
-    public void removeFriend(String username){
+    public void removeFriend(String username) {
         friendsList.remove(username);
     }
 
-    public void blockFriend(String username){
+    public void blockFriend(String username) {
         blockedList.add(username);
         friendsList.remove(username);
         User userBlocked = UsersManager.findUser(username);
         userBlocked.removeFriend(this.userName);
     }
 
-    public void unblockFriend(String username){
+    public void unblockFriend(String username) {
         blockedList.remove(username);
     }
 
-    public ArrayList<User> searchUsers(String searchString){
+    public ArrayList<User> searchUsers(String searchString) {
         return UsersManager.searchUsers(this.userName, searchString);
     }
 
-    public void addMyPosts(Post post){
+    public void hidePost(String postID){
+        Post post = PostsManager.findPost(postID);
+        hiddenPosts.add(post);
+    }
+
+    public void addMyPosts(Post post) {
         myPosts.add(post);
     }
 
-    public void createPost(String content){
+    public void createPost(String content) {
         addMyPosts(PostsManager.createPost(this.userName, content));
     }
 
-    public void createComment(String postID, String commentString){
+    public void createComment(String postID, String commentString) {
         CommentsManager.createComment(postID, this.userName, commentString);
     }
 
@@ -116,31 +122,34 @@ public class User {
         this.myPosts = myPosts;
     }
 
-    public void upvotePost(String postID){
+    public void upvotePost(String postID) {
         Post post = PostsManager.findPost(postID);
         post.upvote();
     }
 
-    public void upvoteComment(String commentID){
+    public void upvoteComment(String commentID) {
         Comment comment = CommentsManager.findComment(commentID);
         comment.upvote();
     }
 
-    public void downvotePost(String postID){
+    public void downvotePost(String postID) {
         Post post = PostsManager.findPost(postID);
         post.downvote();
     }
 
-    public void downvoteComment(String commentID){
+    public void downvoteComment(String commentID) {
         Post post = PostsManager.findPost(commentID);
         post.downvote();
     }
 
     public ArrayList<Post> getMyFriendsPosts() {
         ArrayList<Post> myFriendsPosts = new ArrayList<>();
-        for (String username : friendsList){
+        for (String username : friendsList) {
             User user = UsersManager.findUser(username);
-            myFriendsPosts.addAll(user.getMyPosts());
+            for (Post userPost : user.getMyPosts()){
+                if(!hiddenPosts.contains(userPost))
+                    myFriendsPosts.add(userPost);
+            }
         }
         return myFriendsPosts;
     }
@@ -148,23 +157,13 @@ public class User {
     public String toString() {
         String friendsListString = "";
         if (friendsList != null) {
-            for (int i = 0; i < friendsList.size(); i++) {
-                if (i == friendsList.size() - 1)
-                    friendsListString = String.format("%s%s", friendsListString, friendsList.get(i));
-                else
-                    friendsListString = String.format("%s%s,", friendsListString, friendsList.get(i));
-            }
+            friendsListString = String.join(",", friendsList);
         }
 
 
         String blockedListString = "";
         if (blockedList != null) {
-            for (int i = 0; i < blockedList.size(); i++) {
-                if (i == blockedList.size() - 1)
-                    blockedListString = String.format("%s%s", blockedListString, blockedList.get(i));
-                else
-                    blockedListString = String.format("%s%s,", blockedListString, blockedList.get(i));
-            }
+            blockedListString = String.join(",", blockedList);
         }
 
         String myPostsString = "";
@@ -177,6 +176,16 @@ public class User {
             }
         }
 
-        return String.format("%s;%s;%s;%s;%s;%s;%s;%s", userName, firstName, lastName, password, profilePic, friendsListString, blockedListString, myPostsString);
+        String hiddenPostsString = "";
+        if (hiddenPosts != null) {
+            for (int i = 0; i < hiddenPosts.size(); i++) {
+                if (i == hiddenPosts.size() - 1)
+                    hiddenPostsString = String.format("%s%s", hiddenPostsString, hiddenPosts.get(i).getPostID());
+                else
+                    hiddenPostsString = String.format("%s%s,", hiddenPostsString, hiddenPosts.get(i).getPostID());
+            }
+        }
+
+        return String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s", userName, firstName, lastName, password, profilePic, friendsListString, blockedListString, myPostsString, hiddenPostsString);
     }
 }

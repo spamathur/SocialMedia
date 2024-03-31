@@ -1,4 +1,5 @@
 import java.util.UUID;
+
 public class Comment {
     private String commentID;
     private String postAuthor;
@@ -7,7 +8,7 @@ public class Comment {
     private int upvotes;
     private int downvotes;
 
-    public Comment(String creator, String content, String postAuthor){
+    public Comment(String creator, String content, String postAuthor) {
         this.creator = creator;
         this.content = content;
         this.postAuthor = postAuthor;
@@ -15,11 +16,12 @@ public class Comment {
         this.upvotes = 0;
         this.downvotes = 0;
     }
-    public void upvote(){
+
+    public void upvote() {
         upvotes++;
     }
 
-    public void downvote(){
+    public void downvote() {
         downvotes++;
     }
 
@@ -71,7 +73,7 @@ public class Comment {
         this.downvotes = downvotes;
     }
 
-    public String toString(){
+    public String toString() {
         return String.format("%s;%s;%s;%s;%s;%s", commentID, creator, content, postAuthor, upvotes, downvotes);
     }
 }

@@ -30,8 +30,11 @@ public class PostsManager {
                 post.setPostID(postContents[0]);
                 post.setUpvotes(Integer.parseInt(postContents[3]));
                 post.setDownvotes(Integer.parseInt(postContents[4]));
-                for (String commentID : postContents[5].split(","))
-                    post.addComment(CommentsManager.findComment(commentID));
+                if (!postContents[5].isEmpty()) {
+                    for (String commentID : postContents[5].split(",")) {
+                        post.addComment(CommentsManager.findComment(commentID));
+                    }
+                }
                 postsList.add(post);
                 line = bfr.readLine();
             }

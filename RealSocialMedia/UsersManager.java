@@ -3,7 +3,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-
 public class UsersManager {
     private static final String FILENAME = "users.txt";
     private static List<User> usersList = Collections.synchronizedList(new ArrayList<>());
@@ -53,12 +52,20 @@ public class UsersManager {
             while (line != null) {
                 String[] userContents = line.split(";", -1);
                 User user = new User(userContents[0], userContents[1], userContents[2], userContents[3], userContents[4]);
-                user.setFriendsList(new ArrayList<>(Arrays.asList(userContents[5].split(","))));
-                user.setBlockedList(new ArrayList<>(Arrays.asList(userContents[6].split(","))));
+                if (!userContents[5].isEmpty()){
+                    user.setFriendsList(new ArrayList<>(Arrays.asList(userContents[5].split(","))));
+                }
+                if (!userContents[6].isEmpty()){
+                    user.setBlockedList(new ArrayList<>(Arrays.asList(userContents[6].split(","))));
+                }
                 if (!userContents[7].isEmpty()) {
                     for (String postID : userContents[7].split(",")) {
-                        System.out.println(postID);
                         user.addMyPosts(PostsManager.findPost(postID));
+                    }
+                }
+                if (!userContents[8].isEmpty()) {
+                    for (String postID : userContents[8].split(",")) {
+                        user.hidePost(postID);
                     }
                 }
                 usersList.add(user);

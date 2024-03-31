@@ -7,7 +7,16 @@ public class CommentsManager {
     private static final String FILENAME = "comments.txt";
     private static List<Comment> commentsList = Collections.synchronizedList(new ArrayList<>());
 
-    public static void createComment(String postID, String creator, String content){
+    public static synchronized void deleteComment(String commentID){
+        for (int i = 0; i < commentsList.size(); i++){
+            if (commentsList.get(i).getCommentID().equals(commentID)){
+                commentsList.remove(i);
+                break;
+            }
+        }
+    }
+
+    public static void createComment(String postID, String creator, String content) {
         Post post = PostsManager.findPost(postID);
         Comment comment = new Comment(creator, content, post.getCreator());
         post.addComment(comment);
@@ -15,7 +24,7 @@ public class CommentsManager {
     }
 
     public static synchronized Comment findComment(String commentID) {
-        for (Comment comment : commentsList){
+        for (Comment comment : commentsList) {
             if (comment.getCommentID().equals(commentID))
                 return comment;
         }
@@ -38,7 +47,7 @@ public class CommentsManager {
     }
 
     public static void writeComments() throws IOException {
-        try(PrintWriter pw = new PrintWriter(new FileWriter(FILENAME))){
+        try (PrintWriter pw = new PrintWriter(new FileWriter(FILENAME))) {
             for (Comment comment : commentsList) {
                 pw.println(comment.toString());
             }

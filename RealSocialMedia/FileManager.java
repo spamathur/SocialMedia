@@ -2,9 +2,9 @@ import java.io.IOException;
 
 public class FileManager {
     public static void readAll() throws IOException {
-        UsersManager.readUsers();
-        PostsManager.readPosts();
         CommentsManager.readComments();
+        PostsManager.readPosts();
+        UsersManager.readUsers();
     }
 
     public static void writeAll() throws IOException{

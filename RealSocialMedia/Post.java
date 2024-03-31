@@ -9,7 +9,7 @@ public class Post {
     private int downvotes;
     private ArrayList<Comment> comments = new ArrayList<>();
 
-    public Post(String creator, String content){
+    public Post(String creator, String content) {
         this.creator = creator;
         this.content = content;
         this.postID = UUID.randomUUID().toString();
@@ -17,15 +17,15 @@ public class Post {
         this.downvotes = 0;
     }
 
-    public void addComment(Comment comment){
+    public void addComment(Comment comment) {
         comments.add(comment);
     }
 
-    public void upvote(){
+    public void upvote() {
         upvotes++;
     }
 
-    public void downvote(){
+    public void downvote() {
         downvotes++;
     }
 
@@ -77,17 +77,15 @@ public class Post {
         this.comments = comments;
     }
 
-    public String toString(){
+    public String toString() {
         String commentsString = "";
         if (comments != null) {
             for (int i = 0; i < comments.size(); i++) {
                 Comment comment = comments.get(i);
-                if (comment != null) {
-                    if (i == comments.size() - 1)
-                        commentsString = String.format("%s%s", commentsString, comment.getCommentID());
-                    else
-                        commentsString = String.format("%s%s,", commentsString, comment.getCommentID());
-                }
+                if (i == comments.size() - 1)
+                    commentsString = String.format("%s%s", commentsString, comment.getCommentID());
+                else
+                    commentsString = String.format("%s%s,", commentsString, comment.getCommentID());
             }
         }
         return String.format("%s;%s;%s;%s;%s;%s", postID, creator, content, upvotes, downvotes, commentsString);
