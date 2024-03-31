@@ -19,6 +19,45 @@ public class UserTest {
         assertEquals(1, user.searchUsers("Jane").size());
     }
 
+    public void testSetAndGetUserName() {
+        user.setUserName("johnny");
+        assertEquals("johnny", user.getUserName());
+    }
+
+    @Test
+    public void testSetAndGetFirstName() {
+        user.setFirstName("Johnny");
+        assertEquals("Johnny", user.getFirstName());
+    }
+
+    @Test
+    public void testSetAndGetLastName() {
+        user.setLastName("Dough");
+        assertEquals("Dough", user.getLastName());
+    }
+
+    @Test
+    public void testSetAndGetPassword() {
+        user.setPassword("newpassword");
+        assertEquals("newpassword", user.getPassword());
+    }
+
+    @Test
+    public void testSetAndGetProfilePic() {
+        user.setProfilePic("new_profile.jpg");
+        assertEquals("new_profile.jpg", user.getProfilePic());
+    }
+
+    @Test
+    public void testGetMyFriendsPosts() {
+        User friend = new User("jane", "Jane", "Doe", "password", "profile.jpg");
+        Post post = new Post("1", "jane", "Hello from Jane");
+        friend.addMyPosts(post);
+        user.addFriend("jane");
+        UsersManager.usersList.add(friend);
+        assertEquals(1, user.getMyFriendsPosts().size());
+        assertEquals(post, user.getMyFriendsPosts().get(0));
+    }
 
     @Test
     public void testHidePost() {
