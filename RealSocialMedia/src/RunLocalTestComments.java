@@ -81,5 +81,30 @@ public class RunLocalTest {
             String expected = comment.getCommentID() + ";" + "creator" + ";" + "This is a test comment" + ";" + "postAuthor" + ";0;0";
             Assert.assertEquals("toString should return the correct format", expected, comment.toString());
         }
+
+        @Test(timeout = 1000)
+        public void CommentClassDeclarationTest() {
+            Class<?> clazz;
+            int modifiers;
+            Class<?> superclass;
+            Class<?>[] superinterfaces;
+
+            clazz = FoundationDatabase.class;
+
+            modifiers = clazz.getModifiers();
+
+            superclass = clazz.getSuperclass();
+
+            superinterfaces = clazz.getInterfaces();
+
+            Assert.assertTrue("Ensure that `Comment` is `public`!",
+                    Modifier.isPublic(modifiers));
+            Assert.assertFalse("Ensure that `Comment` is NOT `abstract`!",
+                    Modifier.isAbstract(modifiers));
+            Assert.assertEquals("Ensure that `Comment` extends `Object`!",
+                    Object.class, superclass);
+            Assert.assertEquals("Ensure that `Comment` implements no interfaces!",
+                    0, superinterfaces.length);
+        }
     }
 }
