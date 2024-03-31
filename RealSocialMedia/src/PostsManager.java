@@ -5,7 +5,7 @@ import java.util.Collections;
 import java.util.List;
 
 public class PostsManager {
-    private static final String FILENAME = "posts.txt";
+    private static String FILENAME = "posts.txt";
     private static List<Post> postsList = Collections.synchronizedList(new ArrayList<>());
     public static synchronized Post findPost(String postID) {
         for (Post post : postsList){
@@ -13,6 +13,10 @@ public class PostsManager {
                 return post;
         }
         return new Post("","");
+    }
+
+    public static List<Post> getPostsList() {
+        return postsList;
     }
 
     public static Post createPost(String creator, String content){
