@@ -1,4 +1,14 @@
 import java.util.ArrayList;
+
+/**
+ * A class dedicated to Users of the social media platform
+ * <p>
+ * Purdue University -- CS18000 -- Spring 2024
+ *
+ * @author Project 5 Team 3 Lab 27
+ * @version March 31, 2024
+ */
+
 public class User {
     private String userName;
     private String firstName;
