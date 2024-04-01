@@ -9,7 +9,7 @@ import java.io.IOException;
  * @version March 31, 2024
  */
 
-public class FileManager {
+public class FileManager implements FileManagerInterface {
     public static void readAll() throws IOException {
         CommentsManager.readComments();
         PostsManager.readPosts();
