@@ -8,7 +8,7 @@
  */
 
 public class PostNotFoundException extends Exception {
-    public PostNotFoundException(){
+    public PostNotFoundException() {
         super();
     }
 }
