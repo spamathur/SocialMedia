@@ -1,73 +1,81 @@
-import org.junit.Before;
-import org.junit.Test;
+import java.io.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 
-import java.io.IOException;
+public class UsersManager {
+    private static final String FILENAME = "users.txt";
+    private static List<User> usersList = Collections.synchronizedList(new ArrayList<>());
 
-import static org.junit.Assert.*;
-
-public class UsersManagerTest {
-
-    @Test
-    public void testSignUp() throws UserNameTakenException {
-        User newUser = new User("john", "John", "Doe", "password", "profile.jpg");
-        User signedUpUser = UsersManager.signUp(newUser);
-        assertNotNull(signedUpUser);
-        assertEquals("john", signedUpUser.getUserName());
+    public static synchronized User findUser(String username) {
+        for (User user : usersList) {
+            if (user.getUserName().equals(username))
+                return user;
+        }
+        return null;
     }
 
-    @Test(expected = UserNameTakenException.class)
-    public void testSignUpWithExistingUsername() throws UserNameTakenException {
-        User user1 = new User("john", "John", "Doe", "password", "profile.jpg");
-        UsersManager.signUp(user1);
-        User user2 = new User("john", "Johnny", "Doe", "password123", "profile2.jpg");
-        UsersManager.signUp(user2); // This should throw UserNameTakenException
+    public static synchronized User signUp(User newUser) throws UserNameTakenException {
+        for (User user : usersList) {
+            if (user.getUserName().equals(newUser.getUserName())) {
+                throw new UserNameTakenException();
+            }
+        }
+        usersList.add(newUser);
+        return newUser;
     }
 
-    @Test
-    public void testLogIn() throws UserNameTakenException, LogInFailedException {
-        User newUser = new User("jane", "Jane", "Doe", "password", "profile.jpg");
-        UsersManager.signUp(newUser);
-        User loggedInUser = UsersManager.logIn("jane", "password");
-        assertNotNull(loggedInUser);
-        assertEquals("jane", loggedInUser.getUserName());
+    public static synchronized User logIn(String userName, String password) throws LogInFailedException {
+        for (User user : usersList) {
+            if (user.getUserName().equals(userName) && user.getPassword().equals(password)) {
+                return user;
+            }
+        }
+        throw new LogInFailedException();
     }
 
-    @Test(expected = LogInFailedException.class)
-    public void testLogInWithIncorrectPassword() throws UserNameTakenException, LogInFailedException {
-        User newUser = new User("jane", "Jane", "Doe", "password", "profile.jpg");
-        UsersManager.signUp(newUser);
-        UsersManager.logIn("jane", "wrongpassword"); // This should throw LogInFailedException
+    public static synchronized ArrayList<User> searchUsers(String myUserName, String searchString) {
+        ArrayList<User> matchedUsers = new ArrayList<>();
+        for (User user : usersList) {
+            if (user.getFirstName().toLowerCase().contains(searchString.toLowerCase()) || user.getLastName().toLowerCase().contains(searchString.toLowerCase())
+                    || user.getUserName().toLowerCase().contains(searchString.toLowerCase())) {
+                if (!user.getBlockedList().contains(myUserName))
+                    matchedUsers.add(user);
+            }
+        }
+        return matchedUsers;
     }
 
-    @Test
-    public void testSearchUsers() throws UserNameTakenException {
-        User user1 = new User("john", "John", "Doe", "password", "profile.jpg");
-        User user2 = new User("jane", "Jane", "Doe", "password", "profile.jpg");
-        UsersManager.signUp(user1);
-        UsersManager.signUp(user2);
-        assertEquals(1, UsersManager.searchUsers("john", "Jane").size());
-        assertEquals("jane", UsersManager.searchUsers("john", "Jane").get(0).getUserName());
-    }
-    public void testFindUserNonExistent() {
-        assertNull(UsersManager.findUser("nonexistent"));
-    }
-
-    @Test
-    public void testSearchUsersEmptyString() throws UserNameTakenException {
-        User user1 = new User("john", "John", "Doe", "password", "profile.jpg");
-        User user2 = new User("jane", "Jane", "Doe", "password", "profile.jpg");
-        UsersManager.signUp(user1);
-        UsersManager.signUp(user2);
-        assertEquals(2, UsersManager.searchUsers("john", "").size());
+    public static void readUsers() throws IOException {
+        try (BufferedReader bfr = new BufferedReader(new FileReader(FILENAME))) {
+            String line = bfr.readLine();
+            while (line != null) {
+                String[] userContents = line.split(";", -1);
+                User user = new User(userContents[0], userContents[1], userContents[2], userContents[3], userContents[4]);
+                user.setFriendsList(new ArrayList<>(Arrays.asList(userContents[5].split(","))));
+                user.setBlockedList(new ArrayList<>(Arrays.asList(userContents[6].split(","))));
+                if (!userContents[7].isEmpty()) {
+                    for (String postID : userContents[7].split(",")) {
+                        user.addMyPosts(PostsManager.findPost(postID));
+                    }
+                }
+                usersList.add(user);
+                line = bfr.readLine();
+            }
+        }
     }
 
-    @Test
-    public void testReadAndWriteUsers() throws IOException, UserNameTakenException, IOException {
-        User user = new User("john", "John", "Doe", "password", "profile.jpg");
-        UsersManager.signUp(user);
-        UsersManager.writeUsers();
-        UsersManager.readUsers();
-        assertNotNull(UsersManager.findUser("john"));
+    public static void writeUsers() throws IOException {
+        try (PrintWriter pw = new PrintWriter(new FileWriter(FILENAME))) {
+            for (User user : usersList) {
+                pw.println(user.toString());
+            }
+        }
     }
-    // Additional tests can be added for other methods.
+
+    // Assuming a method to clear all users (for testing purposes)
+    public static void clearUsers() {
+        usersList.clear();
+    }
 }
