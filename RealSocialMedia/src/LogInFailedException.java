@@ -8,7 +8,7 @@
  */
 
 public class LogInFailedException extends Exception {
-    public LogInFailedException(){
+    public LogInFailedException() {
         super();
     }
 }
