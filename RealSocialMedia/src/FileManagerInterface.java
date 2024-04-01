@@ -10,7 +10,13 @@ import java.io.IOException;
  */
 
 public interface FileManagerInterface {
-    void readAll() throws IOException; //reads comments, posts, and users
+    static void readAll() throws IOException //reads comments, posts, and users
+    {
 
-    void writeAll() throws IOException; //writes users, posts, and comments
+    }
+
+    static void writeAll() throws IOException //writes users, posts, and comments
+    {
+
+    }
 }
