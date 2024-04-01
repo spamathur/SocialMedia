@@ -1,6 +1,15 @@
 import java.util.ArrayList;
 import java.util.UUID;
 
+/**
+ * A class dedicated to forming posts for the social media platform
+ * <p>
+ * Purdue University -- CS18000 -- Spring 2024
+ *
+ * @author Project 5 Team 3 Lab 27
+ * @version March 31, 2024
+ */
+
 public class Post {
     private String postID;
     private String creator;
