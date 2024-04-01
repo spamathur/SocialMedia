@@ -58,7 +58,7 @@ public interface UserInterface {
 
     void setBlockedList(ArrayList<String> blockedList); //sets blocked list
 
-    ArrayList<Post> getMyPosts(); //reutnrs the user's posts
+    ArrayList<Post> getMyPosts(); //returns the user's posts
 
     void setMyPosts(ArrayList<Post> myPosts); //sets the user's posts
 
@@ -70,7 +70,7 @@ public interface UserInterface {
 
     void downvoteComment(String commentID); //finds and downvotes a comment
 
-    ArrayList<Post> getMyFriendsPosts(); //returns the user's friend's posts
+    ArrayList<Post> getMyFriendsPosts(); //returns the user's friends' posts
 
     String toString(); //returns the user's username, firstname, lastname, password, profilePic, friendslist,
     // blocklist, the user's posts, and their hidden posts
