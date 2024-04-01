@@ -74,6 +74,10 @@ public class UsersManager {
         }
     }
 
+    public static List<User> getUsersList() {
+        return usersList;
+    }
+
     // Assuming a method to clear all users (for testing purposes)
     public static void clearUsers() {
         usersList.clear();
