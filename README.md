@@ -1,5 +1,5 @@
 # SocialMedia
-This project creates a social media for posting and commenting. Uesrs can sign up and login the social media and get their own accounts. Users can send posts on the media, and they can follow other users to see their posts.
+This project creates a social media for posting and commenting. Uesrs can sign up and login the social media and get their own accounts. Users can send text posts on the media, and they can follow other users to see their posts.
 
 Following contents describe the main functions of the codes and brief explanation for key methods in each class.
 
@@ -76,3 +76,19 @@ This class represents an exception that is thrown when a user fails to log in, t
 ### Constructor
 
 - `LogInFailedException()`: Constructs a new LogInFailedException with a default error message.
+
+## UserNameTakenException Class
+
+This class represents an exception that is thrown when a user tries to sign up with a username that is already taken.
+
+### Constructor
+
+- `UserNameTakenException()`: Constructs a new UserNameTakenException with a default error message.
+
+## UserNotFoundException Class
+
+This class represents an exception that is thrown when a user is not found in the system, typically during search operations.
+
+### Constructor
+
+- `UserNotFoundException()`: Constructs a new UserNotFoundException with a default error message.
