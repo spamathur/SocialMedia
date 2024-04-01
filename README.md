@@ -3,6 +3,14 @@ This project creates a social media for posting and commenting. Uesrs can sign u
 
 Following contents describe the main functions of the codes and brief explanation for key methods in each class.
 
+## Main Class
+
+This is the main entry point of the application. It demonstrates the usage of the `FileManager`, `UsersManager`, and other classes in the system.
+
+### Key Methods
+
+- `main(String[] args)`: The main method that demonstrates the usage of the system.
+
 ## Comment Class
 
 This class represents a comment on a post in the system. Each comment has a unique ID, a creator, content, and upvote/downvote counts.
@@ -60,3 +68,11 @@ This class manages all users in the system. It provides functionality for user r
 - `searchUsers(String myUserName, String searchString)`: Searches for users based on a search string, excluding users blocked by the searcher.
 - `readUsers()`: Reads user data from a file.
 - `writeUsers()`: Writes user data to a file.
+
+## LogInFailedException Class
+
+This class represents an exception that is thrown when a user fails to log in, typically due to incorrect credentials.
+
+### Constructor
+
+- `LogInFailedException()`: Constructs a new LogInFailedException with a default error message.
