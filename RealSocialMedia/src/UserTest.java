@@ -51,10 +51,10 @@ public class UserTest {
     @Test
     public void testGetMyFriendsPosts() {
         User friend = new User("jane", "Jane", "Doe", "password", "profile.jpg");
-        Post post = new Post("1", "jane", "Hello from Jane");
+        Post post = new Post("jane", "Hello from Jane");
         friend.addMyPosts(post);
         user.addFriend("jane");
-        UsersManager.usersList.add(friend);
+        UsersManager.getUsersList().add(friend);
         assertEquals(1, user.getMyFriendsPosts().size());
         assertEquals(post, user.getMyFriendsPosts().get(0));
     }
