@@ -3,22 +3,6 @@ This projects create a social media for posting and commenting. Uesrs can sign u
 
 Following contents describe the main functions of the codes and brief explanation for key methods in each class.
 
-## User Class
-
-This class represents a user in the system. Each user has a unique username, a first name, a last name, a password, and a profile picture. Users can also have a list of friends, a list of blocked users, and a list of their own posts.
-
-### Key Methods
-
-- `addFriend(String username)`: Adds a user to the current user's friends list.
-- `removeFriend(String username)`: Removes a user from the current user's friends list.
-- `blockFriend(String username)`: Blocks a user, removing them from the current user's friends list.
-- `unblockFriend(String username)`: Unblocks a user.
-- `searchUsers(String searchString)`: Searches for users based on a search string.
-- `createPost(String content)`: Creates a new post with the given content.
-- `hidePost(String postID)`: Hides a post from the user's feed.
-- `upvotePost(String postID)`: Upvotes a post.
-- `downvotePost(String postID)`: Downvotes a post.
-
 ## Comment Class
 
 This class represents a comment on a post in the system. Each comment has a unique ID, a creator, content, and upvote/downvote counts.
@@ -49,3 +33,30 @@ This class provides functionality to read and write all data (users, posts, comm
 - `readAll()`: Reads all data from files.
 - `writeAll()`: Writes all data to files.
 
+## User Class
+
+This class represents a user in the system. Each user has a unique username, a first name, a last name, a password, and a profile picture. Users can also have a list of friends, a list of blocked users, and a list of their own posts.
+
+### Key Methods
+
+- `addFriend(String username)`: Adds a user to the current user's friends list.
+- `removeFriend(String username)`: Removes a user from the current user's friends list.
+- `blockFriend(String username)`: Blocks a user, removing them from the current user's friends list.
+- `unblockFriend(String username)`: Unblocks a user.
+- `searchUsers(String searchString)`: Searches for users based on a search string.
+- `createPost(String content)`: Creates a new post with the given content.
+- `hidePost(String postID)`: Hides a post from the user's feed.
+- `upvotePost(String postID)`: Upvotes a post.
+- `downvotePost(String postID)`: Downvotes a post.
+
+## UsersManager Class
+
+This class manages all users in the system. It provides functionality for user registration, login, and searching for users.
+
+### Key Methods
+
+- `signUp(User newUser)`: Registers a new user in the system.
+- `logIn(String userName, String password)`: Authenticates a user based on their username and password.
+- `searchUsers(String myUserName, String searchString)`: Searches for users based on a search string, excluding users blocked by the searcher.
+- `readUsers()`: Reads user data from a file.
+- `writeUsers()`: Writes user data to a file.
