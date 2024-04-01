@@ -13,7 +13,7 @@ import java.util.List;
  * @version March 31, 2024
  */
 
-public class UsersManager {
+public class UsersManager implements UsersManagerInterface {
     private static final String FILENAME = "users.txt";
     private static List<User> usersList = Collections.synchronizedList(new ArrayList<>());
 
