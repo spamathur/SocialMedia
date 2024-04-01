@@ -20,6 +20,10 @@ public class CommentsManager implements CommentsManagerInterface {
         return commentsList;
     }
 
+    public static void setCommentsList(List<Comment> commentsList) {
+        CommentsManager.commentsList = commentsList;
+    }
+
     public static synchronized void deleteComment(String commentID){
         for (int i = 0; i < commentsList.size(); i++){
             if (commentsList.get(i).getCommentID().equals(commentID)){
