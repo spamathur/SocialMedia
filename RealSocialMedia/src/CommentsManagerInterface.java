@@ -3,7 +3,7 @@ import java.util.List;
 import java.util.ArrayList;
 
 /**
- * A class dedicated to modifying, finding, and saving comments
+ * An interface dedicated to modifying, finding, and saving comments
  * <p>
  * Purdue University -- CS18000 -- Spring 2024
  *
