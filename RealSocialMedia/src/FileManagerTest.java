@@ -1,8 +1,13 @@
 import org.junit.After;
+import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.JUnitCore;
+import org.junit.runner.Result;
+import org.junit.runner.notification.Failure;
 
 import java.io.IOException;
+import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 
 import static org.junit.Assert.*;
@@ -17,45 +22,81 @@ import static org.junit.Assert.*;
 
 public class FileManagerTest {
 
-    @Before
-    public void setUp() {
+    public static void main(String[] args) {
+        Result result = JUnitCore.runClasses(FileManagerTest.TestCase.class);
+        if (result.wasSuccessful()) {
+            System.out.println("Excellent - Test ran successfully");
+        } else {
+            for (Failure failure : result.getFailures()) {
+                System.out.println(failure.toString());
+            }
+        }
+    }
+
+    public static class TestCase {
         // Clear data before each test
-        UsersManager.clearUsers();
-        PostsManager.setPostsList(new ArrayList<>());
-        CommentsManager.getCommentsList().clear(); // Clear the comments list directly
-    }
+        @Before
+        public void setUp() {
+            UsersManager.clearUsers();
+            PostsManager.setPostsList(new ArrayList<>());
+            CommentsManager.setCommentsList(new ArrayList<>());
+        }
 
-    @After
-    public void tearDown() {
         // Clear data after each test
-        UsersManager.clearUsers();
-        PostsManager.setPostsList(new ArrayList<>());
-        CommentsManager.getCommentsList().clear(); // Clear the comments list directly
+        @After
+        public void tearDown() {
+            UsersManager.clearUsers();
+            PostsManager.setPostsList(new ArrayList<>());
+            CommentsManager.setCommentsList(new ArrayList<>());
+        }
+
+        // Test to check the read and write functionality
+        @Test(timeout = 1000)
+        public void testReadAndWriteAll() throws IOException, UserNameTakenException {
+            User user = new User("john", "John", "Doe", "password", "profile.jpg");
+            UsersManager.signUp(user);
+            Post post = PostsManager.createPost("john", "Hello world!");
+            CommentsManager.createComment(post.getPostID(),"john", "Nice post!");
+
+            FileManager.writeAll();
+
+            UsersManager.clearUsers();
+            PostsManager.setPostsList(new ArrayList<>());
+            CommentsManager.setCommentsList(new ArrayList<>());
+
+            FileManager.readAll();
+
+            Assert.assertEquals("Users list should have 1 user", 1, UsersManager.getUsersList().size());
+            Assert.assertEquals("Posts list should have 1 post", 1, PostsManager.getPostsList().size());
+            Assert.assertEquals("Comments list should have 1 comment", 1, CommentsManager.getCommentsList().size());
+        }
+
+        // Test to ensure that the class is declared properly
+        @Test(timeout = 1000)
+        public void FileManagerDeclarationTest() {
+            Class<?> clazz;
+            int modifiers;
+            Class<?> superclass;
+            Class<?>[] superinterfaces;
+
+            clazz = FileManager.class;
+
+            modifiers = clazz.getModifiers();
+
+            superclass = clazz.getSuperclass();
+
+            superinterfaces = clazz.getInterfaces();
+
+            Assert.assertTrue("Ensure that `Comment` is `public`!",
+                    Modifier.isPublic(modifiers));
+            Assert.assertFalse("Ensure that `Comment` is NOT `abstract`!",
+                    Modifier.isAbstract(modifiers));
+            Assert.assertEquals("Ensure that `Comment` extends `Object`!",
+                    Object.class, superclass);
+            Assert.assertEquals("Ensure that `Comment` implements one interfaces!",
+                    1, superinterfaces.length);
+        }
     }
 
-    @Test
-    public void testReadAndWriteAll() throws IOException, UserNameTakenException {
-        // Create sample data
-        User user = new User("john", "John", "Doe", "password", "profile.jpg");
-        UsersManager.signUp(user);
-        Post post = PostsManager.createPost("john", "Hello world!");
-        Comment comment = new Comment("john", "Nice post!", "john");
-        post.addComment(comment);
 
-        // Write data to files
-        FileManager.writeAll();
-
-        // Clear in-memory data
-        UsersManager.clearUsers();
-        PostsManager.setPostsList(new ArrayList<>());
-        CommentsManager.getCommentsList().clear(); // Clear the comments list directly
-
-        // Read data from files
-        FileManager.readAll();
-
-        // Assert that data is correctly read from files
-        assertEquals("Users list should have 1 user", 1, UsersManager.getUsersList().size());
-        assertEquals("Posts list should have 1 post", 1, PostsManager.getPostsList().size());
-        assertEquals("Comments list should have 1 comment", 1, CommentsManager.getCommentsList().size());
-    }
 }
