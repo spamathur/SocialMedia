@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.List;
 
 /**
- * A class dedicated to creating and modifying comments
+ * A class dedicated to modifying, finding, and saving comments
  * <p>
  * Purdue University -- CS18000 -- Spring 2024
  *
