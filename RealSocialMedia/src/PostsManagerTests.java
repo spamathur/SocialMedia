@@ -27,7 +27,7 @@ import java.util.List;
 public class PostsManagerTests {
 
     public static void main(String[] args) {
-        Result result = JUnitCore.runClasses(RunLocalTestCommentManager.TestCase.class);
+        Result result = JUnitCore.runClasses(PostsManagerTests.TestCase.class);
         if (result.wasSuccessful()) {
             System.out.println("Excellent - Test ran successfully");
         } else {
@@ -91,13 +91,13 @@ public class PostsManagerTests {
 
         // Test to ensure that the class is declared properly
         @Test(timeout = 1000)
-        public void CommentClassDeclarationTest() {
+        public void PostManagerClassDeclarationTest() {
             Class<?> clazz;
             int modifiers;
             Class<?> superclass;
             Class<?>[] superinterfaces;
 
-            clazz = CommentsManager.class;
+            clazz = PostsManager.class;
 
             modifiers = clazz.getModifiers();
 
@@ -111,8 +111,8 @@ public class PostsManagerTests {
                     Modifier.isAbstract(modifiers));
             Assert.assertEquals("Ensure that `Comment` extends `Object`!",
                     Object.class, superclass);
-            Assert.assertEquals("Ensure that `Comment` implements no interfaces!",
-                    0, superinterfaces.length);
+            Assert.assertEquals("Ensure that `Comment` implements one interfaces!",
+                    1, superinterfaces.length);
         }
     }
 }
