@@ -1,5 +1,6 @@
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * An interface dedicated to finding users, signing them up, logging them in and saving them to a file
@@ -11,19 +12,43 @@ import java.util.ArrayList;
  */
 
 public interface UsersManagerInterface {
-    User findUser(String username); //finds a user given their username
+    static User findUser(String username) //finds a user given their username
+    {
+        return null;
+    }
 
-    User signUp(User newUser) throws UserNameTakenException; //checks if username already exists, if not, signs them up
+    static User signUp(User newUser) throws UserNameTakenException //checks if username already exists, if not, signs them up
+    {
+        return null;
+    }
 
-    User logIn(String userName, String password) throws LogInFailedException; //logs in a user given their username and password
+    static User logIn(String userName, String password) throws LogInFailedException //logs in a user given their username and password
+    {
+        return null;
+    }
 
-    ArrayList<User> searchUsers(String myUserName, String searchString); //returns searched users (ignores blocked)
+    static ArrayList<User> searchUsers(String myUserName, String searchString) //returns searched users (ignores blocked)
+    {
+        return null;
+    }
 
-    void readUsers() throws IOException; //reads the users in a file, gets their friendList, blockList, and posts (if present)
+    static void readUsers() throws IOException //reads the users in a file, gets their friendList, blockList, and posts (if present)
+    {
 
-    void writeUsers() throws IOException; //writes all the users to a file
+    }
 
-    List<User> getUsersList(); //returns the usersList
+    static void writeUsers() throws IOException //writes all the users to a file
+    {
 
-    void clearUsers(); //clears all users from the usersList
+    }
+
+    static List<User> getUsersList() //returns the usersList
+    {
+        return null;
+    }
+
+    static void clearUsers() //clears all users from the usersList
+    {
+
+    }
 }
