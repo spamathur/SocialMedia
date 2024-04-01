@@ -93,14 +93,31 @@ This class represents an exception that is thrown when a user is not found in th
 
 - `UserNotFoundException()`: Constructs a new UserNotFoundException with a default error message.
 
-- Post.java
-The Post class extends the PostInterface interface. This class represents a user’s post. It includes fields like the posts uniquely generated ID (postID), post creator’s username (creator), the content of the post (content), likes (upvotes), dislikes (downvotes), and a list of comments (comments). This class includes methods that lets the user create a post, lets others comment, like or dislike on the post. 
+## Post Class
 
-PostNotFoundException.java
-The PostNotFOundException class is a custom exception that extends the Exception class. It is thrown when a post is not found.
+This class represents a user's post in the system. It includes properties such as the post's uniquely generated ID (`postID`), the post creator's username (`creator`), the content of the post (`content`), likes (`upvotes`), dislikes (`downvotes`), and a list of comments (`comments`). This class provides methods that allow users to create a post, comment on it, and like or dislike it.
 
-PostsManager.java
-The PostsManager class extends the PostsManagerInterface interface. This class acts as a management layer for posts. It provides static methods that help you find posts by their unique ID, create new posts, read posts from a file and write posts to a file. This class is used to keep and retrieve post data. 
+### Key Methods
 
+- `addComment(Comment comment)`: Adds a comment to the post.
+- `upvote()`: Increments the upvote count.
+- `downvote()`: Increments the downvote count.
 
+## PostNotFoundException Class
 
+This class is a custom exception that extends the `Exception` class. It is thrown when a post is not found in the system.
+
+### Constructor
+
+- `PostNotFoundException()`: Constructs a new PostNotFoundException with a default error message.
+
+## PostsManager Class
+
+This class acts as a management layer for posts. It extends the `PostsManagerInterface` interface and provides static methods to manage posts, such as finding posts by their unique ID, creating new posts, reading posts from a file, and writing posts to a file. This class is used to maintain and retrieve post data.
+
+### Key Methods
+
+- `findPost(String postID)`: Finds a post by its unique ID.
+- `createPost(String creator, String content)`: Creates a new post with the specified creator and content.
+- `readPosts()`: Reads post data from a file.
+- `writePosts()`: Writes post data to a file.
