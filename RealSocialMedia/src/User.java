@@ -9,7 +9,7 @@ import java.util.ArrayList;
  * @version March 31, 2024
  */
 
-public class User {
+public class User implements UserInterface {
     private String userName;
     private String firstName;
     private String lastName;
