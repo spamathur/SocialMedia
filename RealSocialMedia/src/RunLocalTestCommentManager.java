@@ -24,7 +24,7 @@ import java.util.UUID;
 public class RunLocalTestCommentManager {
 
     public static void main(String[] args) {
-        Result result = JUnitCore.runClasses(TestCase.class);
+        Result result = JUnitCore.runClasses(RunLocalTestCommentManager.TestCase.class);
         if (result.wasSuccessful()) {
             System.out.println("Excellent - Test ran successfully");
         } else {
@@ -102,7 +102,7 @@ public class RunLocalTestCommentManager {
 
         // Test to ensure that the class is declared properly
         @Test(timeout = 1000)
-        public void CommentClassDeclarationTest() {
+        public void CommentManagerClassDeclarationTest() {
             Class<?> clazz;
             int modifiers;
             Class<?> superclass;
@@ -122,8 +122,8 @@ public class RunLocalTestCommentManager {
                     Modifier.isAbstract(modifiers));
             Assert.assertEquals("Ensure that `Comment` extends `Object`!",
                     Object.class, superclass);
-            Assert.assertEquals("Ensure that `Comment` implements no interfaces!",
-                    0, superinterfaces.length);
+            Assert.assertEquals("Ensure that `Comment` implements one interfaces!",
+                    1, superinterfaces.length);
         }
     }
 }
