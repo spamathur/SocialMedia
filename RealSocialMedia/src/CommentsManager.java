@@ -12,7 +12,7 @@ import java.util.List;
  * @version March 31, 2024
  */
 
-public class CommentsManager {
+public class CommentsManager implements CommentsManagerInterface {
     private static final String FILENAME = "comments.txt";
     private static List<Comment> commentsList = Collections.synchronizedList(new ArrayList<>());
 
