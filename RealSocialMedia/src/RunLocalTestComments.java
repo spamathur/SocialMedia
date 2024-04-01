@@ -6,7 +6,6 @@ import org.junit.runner.notification.Failure;
 
 import java.lang.reflect.Modifier;
 
-
 /**
  * A framework to run public test cases for Comment.java for PJ5.
  *
@@ -17,9 +16,8 @@ import java.lang.reflect.Modifier;
 
 public class RunLocalTestComments {
 
-    // Main method to run the tests
     public static void main(String[] args) {
-        Result result = JUnitCore.runClasses(TestCase.class);
+        Result result = JUnitCore.runClasses(RunLocalTestComments.TestCase.class);
         if (result.wasSuccessful()) {
             System.out.println("Excellent - Test ran successfully");
         } else {
@@ -56,7 +54,7 @@ public class RunLocalTestComments {
             Assert.assertEquals("Upvotes should increase by 1", 1, comment.getUpvotes());
 
             comment.downvote();
-            Assert.assertEquals("Downvotes should increase by 1", 1, comment.getDownvotes());
+            Assert.assertEquals("Downvotes should Increase by 1", 1, comment.getDownvotes());
         }
 
         // Test to check if the setters work and if the getters to get those values work as well
@@ -67,14 +65,14 @@ public class RunLocalTestComments {
             comment.setCreator("newCreator");
             comment.setContent("New content for the comment");
             comment.setPostAuthor("newPostAuthor");
-            comment.setUpvotes(5);
-            comment.setDownvotes(3);
+            comment.upvote();
+            comment.downvote();
 
             Assert.assertEquals("Creator should be updated", "newCreator", comment.getCreator());
             Assert.assertEquals("Content should be updated", "New content for the comment", comment.getContent());
             Assert.assertEquals("Post author should be updated", "newPostAuthor", comment.getPostAuthor());
-            Assert.assertEquals("Upvotes should be updated", 5, comment.getUpvotes());
-            Assert.assertEquals("Downvotes should be updated", 3, comment.getDownvotes());
+            Assert.assertEquals("Upvotes should be updated", 1, comment.getUpvotes());
+            Assert.assertEquals("Downvotes should be updated", 1, comment.getDownvotes());
         }
 
         // Test to check if the toString works as expected
@@ -107,8 +105,8 @@ public class RunLocalTestComments {
                     Modifier.isAbstract(modifiers));
             Assert.assertEquals("Ensure that `Comment` extends `Object`!",
                     Object.class, superclass);
-            Assert.assertEquals("Ensure that `Comment` implements no interfaces!",
-                    0, superinterfaces.length);
+            Assert.assertEquals("Ensure that `Comment` implements one interfaces!",
+                    1, superinterfaces.length);
         }
     }
 }
