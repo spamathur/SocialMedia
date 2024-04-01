@@ -12,13 +12,28 @@ import java.util.List;
 
 public interface PostsManagerInterface {
 
-    void setPostsList(List<Post> postsList); //sets posts to given posts
+    static void setPostsList(List<Post> postsList) //sets posts to given posts
+    {
 
-    Post findPost(String postID); //given a postID, finds a post
+    }
 
-    Post createPost(String creator, String content); //creates a post, adds it to existing post list
+    static Post findPost(String postID) //given a postID, finds a post
+    {
+        return null;
+    }
 
-    void readPosts() throws IOException; //reads a file, and gets the post information (post ID, upvote, downvote)
+    static Post createPost(String creator, String content) //creates a post, adds it to existing post list
+    {
+        return null;
+    }
 
-    void writePosts() throws IOException; //writes posts (string format) to a file
+    static void readPosts() throws IOException //reads a file, and gets the post information (post ID, upvote, downvote)
+    {
+
+    }
+
+    static void writePosts() throws IOException //writes posts (string format) to a file
+    {
+
+    }
 }
