@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 /**
- * A class dedicated to forming posts for the social media platform
+ * An interface dedicated to forming posts for the social media platform
  * <p>
  * Purdue University -- CS18000 -- Spring 2024
  *
