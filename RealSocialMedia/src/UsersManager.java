@@ -4,6 +4,15 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * A class dedicated to finding users, signing them up, logging them in and saving them to a file
+ * <p>
+ * Purdue University -- CS18000 -- Spring 2024
+ *
+ * @author Project 5 Team 3 Lab 27
+ * @version March 31, 2024
+ */
+
 public class UsersManager {
     private static final String FILENAME = "users.txt";
     private static List<User> usersList = Collections.synchronizedList(new ArrayList<>());
