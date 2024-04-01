@@ -73,7 +73,7 @@ public class PostsManagerTests {
             PostsManager.createPost("user2", "Post 2");
 
             List<Post> posts = PostsManager.getPostsList();
-            assertEquals("There should be 2 posts in the list", 2, posts.size());
+            Assert.assertEquals("There should be 2 posts in the list", 2, posts.size());
         }
 
         // Test to check if the reading and writing to the file works
@@ -85,8 +85,8 @@ public class PostsManagerTests {
             PostsManager.setPostsList(new ArrayList<>());
             PostsManager.readPosts();
             List<Post> posts = PostsManager.getPostsList();
-            assertEquals("There should be 1 post after reading from the file", 1, posts.size());
-            assertEquals("The post content should match", "Test post content", posts.get(0).getContent());
+            Assert.assertEquals("There should be 1 post after reading from the file", 1, posts.size());
+            Assert.assertEquals("The post content should match", "Test post content", posts.get(0).getContent());
         }
 
         // Test to ensure that the class is declared properly
