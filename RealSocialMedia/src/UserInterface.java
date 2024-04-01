@@ -1,67 +1,78 @@
 import java.util.ArrayList;
 
+/**
+ * a class dedicated to Users of the social media platform
+ * <p>
+ * Purdue University -- CS18000 -- Spring 2024
+ *
+ * @author Project 5 Team 3 Lab 27
+ * @version March 31, 2024
+ */
+
 public interface UserInterface {
-    void addFriend(String username);
+    void addFriend(String username); //adds a friend
 
-    void removeFriend(String username);
+    void removeFriend(String username); //removes a friend
 
-    void blockFriend(String username);
+    void blockFriend(String username); //blocks a user
 
-    void unblockFriend(String username);
+    void unblockFriend(String username); //unblocks a user and removes them as a friend
 
-    ArrayList<User> searchUsers(String searchString);
+    ArrayList<User> searchUsers(String searchString); //searches up users
 
-    void hidePost(String postID);
+    void hidePost(String postID); //hides a post
 
-    ArrayList<Post> getHiddenPosts();
+    ArrayList<Post> getHiddenPosts(); //returns all hidden posts
 
-    void addMyPosts(Post post);
+    void addMyPosts(Post post); //takes in a post, and adds it to the myPost in user class
 
-    void createPost(String content);
+    void createPost(String content); //takes in a post from the PostManagement class and adds it to MyPost in user class
 
-    void createComment(String postID, String commentString);
+    void createComment(String postID, String commentString); //creates a comment
 
-    String getUserName();
+    String getUserName(); //returns username
 
-    void setUserName(String userName);
+    void setUserName(String userName); //sets username
 
-    String getFirstName();
+    String getFirstName(); //returns first name
 
-    void setFirstName(String firstName);
+    void setFirstName(String firstName); //sets first name
 
-    String getLastName();
+    String getLastName(); //returns last name
 
-    void setLastName(String lastName);
+    void setLastName(String lastName); //sets last name
 
-    String getPassword();
+    String getPassword(); //gets password
 
-    void setPassword(String password);
+    void setPassword(String password); //sets password
 
-    String getProfilePic();
+    String getProfilePic(); //returns profile pic
 
-    void setProfilePic(String profilePic);
+    void setProfilePic(String profilePic); //sets profile pic
 
-    ArrayList<String> getFriendsList();
+    ArrayList<String> getFriendsList(); //returns friend list
 
-    void setFriendsList(ArrayList<String> friendsList);
+    void setFriendsList(ArrayList<String> friendsList); //sets friend list
 
-    ArrayList<String> getBlockedList();
+    ArrayList<String> getBlockedList(); //returns blocked list
 
-    void setBlockedList(ArrayList<String> blockedList);
+    void setBlockedList(ArrayList<String> blockedList); //sets blocked list
 
-    ArrayList<Post> getMyPosts();
+    ArrayList<Post> getMyPosts(); //reutnrs the user's posts
 
-    void setMyPosts(ArrayList<Post> myPosts);
+    void setMyPosts(ArrayList<Post> myPosts); //sets the user's posts
 
-    void upvotePost(String postID);
+    void upvotePost(String postID); //finds and upvotes a post
 
-    void upvoteComment(String commentID);
+    void upvoteComment(String commentID); //finds and upvotes a comment
 
-    void downvotePost(String postID);
+    void downvotePost(String postID); //finds and downvotes a post
 
-    void downvoteComment(String commentID);
+    void downvoteComment(String commentID); //finds and downvotes a comment
 
-    ArrayList<Post> getMyFriendsPosts();
+    ArrayList<Post> getMyFriendsPosts(); //returns the user's friend's posts
 
-    String toString();
+    String toString(); //returns the user's username, firstname, lastname, password, profilePic, friendslist,
+    // blocklist, the user's posts, and their hidden posts
+
 }
