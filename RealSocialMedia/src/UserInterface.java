@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 /**
- * a class dedicated to Users of the social media platform
+ * A class dedicated to Users of the social media platform
  * <p>
  * Purdue University -- CS18000 -- Spring 2024
  *
