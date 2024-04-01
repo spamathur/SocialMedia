@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.util.List;
 
 /**
- * a class dedicated to finding, reading, and saving posts
+ * A class dedicated to finding, reading, and saving posts
  * <p>
  * Purdue University -- CS18000 -- Spring 2024
  *
