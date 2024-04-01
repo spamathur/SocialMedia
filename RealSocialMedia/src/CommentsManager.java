@@ -3,6 +3,15 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
+/**
+ * A class dedicated to creating and modifying comments
+ * <p>
+ * Purdue University -- CS18000 -- Spring 2024
+ *
+ * @author Project 5 Team 3 Lab 27
+ * @version March 31, 2024
+ */
+
 public class CommentsManager {
     private static final String FILENAME = "comments.txt";
     private static List<Comment> commentsList = Collections.synchronizedList(new ArrayList<>());
