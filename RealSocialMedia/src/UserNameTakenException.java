@@ -8,7 +8,7 @@
  */
 
 public class UserNameTakenException extends Exception {
-    public UserNameTakenException(){
+    public UserNameTakenException() {
         super();
     }
 }
