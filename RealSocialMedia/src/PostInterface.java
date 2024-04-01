@@ -16,9 +16,9 @@ public interface PostInterface {
 
     void downvote(); //increases downvote
 
-    String getPostID(); //returns postId
+    String getPostID(); //returns postID
 
-    void setPostID(String postID); //sets postId
+    void setPostID(String postID); //sets postID
 
     String getCreator(); //gets creator
 
