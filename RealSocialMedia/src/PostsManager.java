@@ -7,6 +7,11 @@ import java.util.List;
 public class PostsManager {
     private static String FILENAME = "posts.txt";
     private static List<Post> postsList = Collections.synchronizedList(new ArrayList<>());
+
+    public static void setPostsList(List<Post> postsList) {
+        PostsManager.postsList = postsList;
+    }
+
     public static synchronized Post findPost(String postID) {
         for (Post post : postsList){
             if (post.getPostID().equals(postID))
