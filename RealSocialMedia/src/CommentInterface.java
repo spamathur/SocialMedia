@@ -1,5 +1,5 @@
 /**
- * A class dedicated to creating and modifying comments
+ * An interface dedicated to creating and modifying comments
  * <p>
  * Purdue University -- CS18000 -- Spring 2024
  *
