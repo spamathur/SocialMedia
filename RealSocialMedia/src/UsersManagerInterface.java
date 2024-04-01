@@ -2,7 +2,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 /**
- * A class dedicated to finding users, signing them up, logging them in and saving them to a file
+ * An interface dedicated to finding users, signing them up, logging them in and saving them to a file
  * <p>
  * Purdue University -- CS18000 -- Spring 2024
  *
