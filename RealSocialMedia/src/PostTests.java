@@ -20,7 +20,7 @@ import java.lang.reflect.Modifier;
 public class PostTests {
 
     public static void main(String[] args) {
-        Result result = JUnitCore.runClasses(RunLocalTestCommentManager.TestCase.class);
+        Result result = JUnitCore.runClasses(PostTests.TestCase.class);
         if (result.wasSuccessful()) {
             System.out.println("Excellent - Test ran successfully");
         } else {
@@ -86,13 +86,13 @@ public class PostTests {
 
         // Test to ensure that the class is declared properly
         @Test(timeout = 1000)
-        public void CommentClassDeclarationTest() {
+        public void PostClassDeclarationTest() {
             Class<?> clazz;
             int modifiers;
             Class<?> superclass;
             Class<?>[] superinterfaces;
 
-            clazz = CommentsManager.class;
+            clazz = Post.class;
 
             modifiers = clazz.getModifiers();
 
@@ -106,8 +106,8 @@ public class PostTests {
                     Modifier.isAbstract(modifiers));
             Assert.assertEquals("Ensure that `Comment` extends `Object`!",
                     Object.class, superclass);
-            Assert.assertEquals("Ensure that `Comment` implements no interfaces!",
-                    0, superinterfaces.length);
+            Assert.assertEquals("Ensure that `Comment` implements one interfaces!",
+                    1, superinterfaces.length);
         }
     }
 
