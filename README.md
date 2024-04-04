@@ -1,7 +1,7 @@
 # SocialMedia
 This project creates a social media for posting and commenting. Users can sign up and login the social media and get their own accounts. Users can send text posts on the media, and they can follow other users to see their posts.
 
-The link of this Github project is `https://github.com/spamathur/SocialMedia`.
+The link of this GitHub project is `https://github.com/spamathur/SocialMedia`.
 
 To run the code, open Main.java and execute it as your Java application's entry point. Inside Main.java, you will find some commented-out code snippets. Uncomment these lines to test various functionalities of the program.
 
