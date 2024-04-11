@@ -1,21 +1,13 @@
 import java.util.ArrayList;
 
-/**
- * A class dedicated to Users of the social media platform
- * <p>
- * Purdue University -- CS18000 -- Spring 2024
- *
- * @author Project 5 Team 3 Lab 27
- * @version March 31, 2024
- */
-
-public class User implements UserInterface {
+public class User {
     private String userName;
     private String firstName;
     private String lastName;
     private String password;
     private String profilePic;
     private ArrayList<String> friendsList = new ArrayList<>();
+    private ArrayList<String> followersList = new ArrayList<>();
     private ArrayList<String> blockedList = new ArrayList<>();
     private ArrayList<Post> myPosts = new ArrayList<>();
     private ArrayList<Post> hiddenPosts = new ArrayList<>();
@@ -28,17 +20,23 @@ public class User implements UserInterface {
         this.profilePic = profilePic;
     }
 
+    // USER METHODS:
+
     public void addFriend(String username) {
         friendsList.add(username);
+        User userFriended = UsersManager.findUser(username);
+        userFriended.addFollower(this.userName);
     }
 
     public void removeFriend(String username) {
         friendsList.remove(username);
+        User userFriended = UsersManager.findUser(username);
+        userFriended.removeFollower(this.userName);
     }
 
     public void blockFriend(String username) {
         blockedList.add(username);
-        friendsList.remove(username);
+        removeFriend(username);
         User userBlocked = UsersManager.findUser(username);
         userBlocked.removeFriend(this.userName);
     }
@@ -51,17 +49,9 @@ public class User implements UserInterface {
         return UsersManager.searchUsers(this.userName, searchString);
     }
 
-    public void hidePost(String postID){
+    public void hidePost(String postID) {
         Post post = PostsManager.findPost(postID);
         hiddenPosts.add(post);
-    }
-
-    public ArrayList<Post> getHiddenPosts() {
-        return hiddenPosts;
-    }
-
-    public void addMyPosts(Post post) {
-        myPosts.add(post);
     }
 
     public void createPost(String content) {
@@ -70,6 +60,52 @@ public class User implements UserInterface {
 
     public void createComment(String postID, String commentString) {
         CommentsManager.createComment(postID, this.userName, commentString);
+    }
+
+    public void upvotePost(String postID) {
+        Post post = PostsManager.findPost(postID);
+        post.upvote();
+    }
+
+    public void upvoteComment(String commentID) {
+        Comment comment = CommentsManager.findComment(commentID);
+        comment.upvote();
+    }
+
+    public void downvotePost(String postID) {
+        Post post = PostsManager.findPost(postID);
+        post.downvote();
+    }
+
+    public void downvoteComment(String commentID) {
+        Post post = PostsManager.findPost(commentID);
+        post.downvote();
+    }
+
+    public ArrayList<Post> getMyFriendsPosts() {
+        ArrayList<Post> myFriendsPosts = new ArrayList<>();
+        for (String username : friendsList) {
+            User user = UsersManager.findUser(username);
+            for (Post userPost : user.getMyPosts()) {
+                if (!hiddenPosts.contains(userPost))
+                    myFriendsPosts.add(userPost);
+            }
+        }
+        return myFriendsPosts;
+    }
+
+    // GETTERS AND SETTERS:
+
+    public void addFollower(String username){
+        followersList.add(username);
+    }
+
+    public void removeFollower(String username){
+        followersList.remove(username);
+    }
+
+    public void addMyPosts(Post post) {
+        myPosts.add(post);
     }
 
     public String getUserName() {
@@ -136,36 +172,20 @@ public class User implements UserInterface {
         this.myPosts = myPosts;
     }
 
-    public void upvotePost(String postID) {
-        Post post = PostsManager.findPost(postID);
-        post.upvote();
+    public ArrayList<String> getFollowersList() {
+        return followersList;
     }
 
-    public void upvoteComment(String commentID) {
-        Comment comment = CommentsManager.findComment(commentID);
-        comment.upvote();
+    public void setFollowersList(ArrayList<String> followersList) {
+        this.followersList = followersList;
     }
 
-    public void downvotePost(String postID) {
-        Post post = PostsManager.findPost(postID);
-        post.downvote();
+    public ArrayList<Post> getHiddenPosts() {
+        return hiddenPosts;
     }
 
-    public void downvoteComment(String commentID) {
-        Post post = PostsManager.findPost(commentID);
-        post.downvote();
-    }
-
-    public ArrayList<Post> getMyFriendsPosts() {
-        ArrayList<Post> myFriendsPosts = new ArrayList<>();
-        for (String username : friendsList) {
-            User user = UsersManager.findUser(username);
-            for (Post userPost : user.getMyPosts()){
-                if(!hiddenPosts.contains(userPost))
-                    myFriendsPosts.add(userPost);
-            }
-        }
-        return myFriendsPosts;
+    public void setHiddenPosts(ArrayList<Post> hiddenPosts) {
+        this.hiddenPosts = hiddenPosts;
     }
 
     public String toString() {
@@ -174,6 +194,10 @@ public class User implements UserInterface {
             friendsListString = String.join(",", friendsList);
         }
 
+        String followersListString = "";
+        if (followersList != null) {
+            followersListString = String.join(",", followersList);
+        }
 
         String blockedListString = "";
         if (blockedList != null) {
@@ -200,6 +224,6 @@ public class User implements UserInterface {
             }
         }
 
-        return String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s", userName, firstName, lastName, password, profilePic, friendsListString, blockedListString, myPostsString, hiddenPostsString);
+        return String.format("%s;%s;%s;%s;%s;%s;%s;%s;%s;%s", userName, firstName, lastName, password, profilePic, friendsListString, blockedListString, myPostsString, hiddenPostsString, followersListString);
     }
 }
