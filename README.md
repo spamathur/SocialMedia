@@ -15,7 +15,7 @@ This is the main entry point of the application. It demonstrates the usage of th
 
 ### Key Methods
 
-- `main(String[] args)`: The main method that demonstrates the usage of the system.
+`main(String[] args)`: The main method that demonstrates the usage of the system.
 
 ## Server Class
 
@@ -23,7 +23,7 @@ This class accepts incoming client connections and uses a new ClientHandler thre
 
 ### Key Methods
 
-- `main(String[] args)`: - This method initializes a ServerSocket to a specific port. It also accepts connections and returns a Socket object that represents the connection. It instantiates a ClientHandler object for each client connected. This method catches an IOException.
+`main(String[] args)`: - This method initializes a ServerSocket to a specific port. It also accepts connections and returns a Socket object that represents the connection. It instantiates a ClientHandler object for each client connected. This method catches an IOException.
 
 ## Client Class
 
@@ -35,22 +35,22 @@ This class connects to the server and manages the client side operations. It use
 
 ### Key Methods
 
-- `COMMUNICATION METHODS`:
+`COMMUNICATION METHODS`:
 - sendRequest(String request): Checks to see if a client is connected and then sends a formatted string to the server.
 - getResponse(): Retrieves a response from the server.
-- `USER INTERACTION METHODS`:
+`USER INTERACTION METHODS`:
 - logIn(String username, String password): Sends login strings to the server.
 - signUp(String username, String firstName, String lastName, String password, String profilePic): Registers a new user with the server.
 - addFriend(String username), removeFriend(String username), blockFriend(String username), unblockFriend(String username): Manages the users friend by sending the commands to the server. 
-- `RETRIEVAL METHODS`:
+`RETRIEVAL METHODS`:
 - getMyFriendsPosts(), getMyPosts(): Retrieves posts from the user or friend and parses the Json into 'User' objects.
 - getMyProfile(): Retrieves the user's profile from the server
 - searchUsers(String searchString): Search for users matching a search string, parse the returned JSON into User objects.
-- `POST AND COMMENT METHODS`:
+`POST AND COMMENT METHODS`:
 - createPost(String content), createComment(String postID, String commentString): Allows the user to post new content and comment on existing posts.
 - upvotePost(String postID), downvotePost(String postID), upvoteComment(String commentID), downvoteComment(String commentID): Send requests to vote on posts and comments.
 - hidePost(String postID): Sends a request to hide a specific post.
-- `OTHER METHODS`:
+`OTHER METHODS`:
 - closeConnection(): CLoses the network stream and socket when the client is done.
 
 ## ClientHandler Class
@@ -62,7 +62,7 @@ This class handles individual client connections. It processes client requests, 
 
 ### Key Methods
 
-- `run()`:
+`run()`:
 -  Reads from and writes to the client.
 -  Listens for login or signup requests until successful before anything.
 -  Handles various other commands from the client (more in the Client.java class).
