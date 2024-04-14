@@ -3,7 +3,7 @@ This project creates a social media for posting and commenting. Users can sign u
 
 The link of this GitHub project is `https://github.com/spamathur/SocialMedia`.
 
-Phase 2 submitted in Vocareum workspace by : ### Abhinav Padmanabhuni
+Phase 2 submitted in Vocareum workspace by : Abhinav Padmanabhuni
 
 Phase 2 Distribution: 
 
