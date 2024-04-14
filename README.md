@@ -35,7 +35,7 @@ This class connects to the server and manages the client side operations. It use
 
 ### Key Methods
 
-`COMMUNICATION METHODS`:
+####`COMMUNICATION METHODS`:
 - sendRequest(String request): Checks to see if a client is connected and then sends a formatted string to the server.
 - getResponse(): Retrieves a response from the server.
 `USER INTERACTION METHODS`:
