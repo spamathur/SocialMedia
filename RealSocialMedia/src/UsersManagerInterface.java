@@ -41,14 +41,4 @@ public interface UsersManagerInterface {
     {
 
     }
-
-    static List<User> getUsersList() //returns the usersList
-    {
-        return null;
-    }
-
-    static void clearUsers() //clears all users from the usersList
-    {
-
-    }
 }
