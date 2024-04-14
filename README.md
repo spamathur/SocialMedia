@@ -6,7 +6,11 @@ The link of this GitHub project is `https://github.com/spamathur/SocialMedia`.
 Phase 2 submitted in Vocareum workspace by : `Abhinav Padmanabhuni`
 
 Phase 2 Distribution: 
-
+`Abhinav Padmanabhuni:`
+`Chenbo Sun:`
+`Sparsh Mathur:`
+`Amrit Multani:`
+`Christina Melnic:`
 
 To run the code, open Main.java and execute it as your Java application's entry point. Inside Main.java, you will find some commented-out code snippets. Uncomment these lines to test various functionalities of the program.
 
