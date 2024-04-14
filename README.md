@@ -35,21 +35,25 @@ This class connects to the server and manages the client side operations. It use
 
 ### Key Methods
 
-####`COMMUNICATION METHODS`:
+`COMMUNICATION METHODS`:
 - sendRequest(String request): Checks to see if a client is connected and then sends a formatted string to the server.
 - getResponse(): Retrieves a response from the server.
+  
 `USER INTERACTION METHODS`:
 - logIn(String username, String password): Sends login strings to the server.
 - signUp(String username, String firstName, String lastName, String password, String profilePic): Registers a new user with the server.
-- addFriend(String username), removeFriend(String username), blockFriend(String username), unblockFriend(String username): Manages the users friend by sending the commands to the server. 
+- addFriend(String username), removeFriend(String username), blockFriend(String username), unblockFriend(String username): Manages the users friend by sending the commands to the server.
+  
 `RETRIEVAL METHODS`:
 - getMyFriendsPosts(), getMyPosts(): Retrieves posts from the user or friend and parses the Json into 'User' objects.
 - getMyProfile(): Retrieves the user's profile from the server
 - searchUsers(String searchString): Search for users matching a search string, parse the returned JSON into User objects.
+  
 `POST AND COMMENT METHODS`:
 - createPost(String content), createComment(String postID, String commentString): Allows the user to post new content and comment on existing posts.
 - upvotePost(String postID), downvotePost(String postID), upvoteComment(String commentID), downvoteComment(String commentID): Send requests to vote on posts and comments.
 - hidePost(String postID): Sends a request to hide a specific post.
+  
 `OTHER METHODS`:
 - closeConnection(): CLoses the network stream and socket when the client is done.
 
