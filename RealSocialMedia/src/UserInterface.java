@@ -75,4 +75,17 @@ public interface UserInterface {
     String toString(); //returns the user's username, firstname, lastname, password, profilePic, friendslist,
     // blocklist, the user's posts, and their hidden posts
 
+    void addFollower(String username); //adds a follower
+
+    void removeFollower(String username); //removes a follower
+
+    ArrayList<String> getFollowersList(); //returns follower list
+
+    void setFollowersList(ArrayList<String> followersList); //sets follower list to given list
+
+    ArrayList<Post> getHiddenPosts(); //returns hidden posts
+
+    void setHiddenPosts(ArrayList<Post> hiddenPosts); //sets hidden posts to a given list
+
+
 }
