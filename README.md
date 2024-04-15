@@ -1,6 +1,8 @@
 # SocialMedia
 This project creates a social media for posting and commenting. Users can sign up and login the social media and get their own accounts. Users can send text posts on the media, and they can follow other users to see their posts.
 
+Authors: Abhinav Padmanabhuni, Chenbo Sun, Sparsh Mathur, Amrit Multani, Christina Melnic
+
 The link of this GitHub project is [https://github.com/spamathur/SocialMedia](https://github.com/spamathur/SocialMedia).
 
 Phase 1 submitted in Vocareum workspace by : `Abhinav Padmanabhuni`
@@ -49,7 +51,9 @@ Following contents describe the main functions of the codes and brief explanatio
 
 ## IO Functionality Tests:
 
-I/O functionality is thoroughly tested within the `ClientTest` and `ClientHandlerTest` classes. Detailed descriptions and testing methodologies are documented in the comments at the beginning of each test case, explaining how specific functionalities are tested.
+### It is important to note that Server.java must be running before ClientTest and ClientHandlerTest are executed.
+
+I/O functionality is thoroughly tested within the `ClientTest` and `ClientHandlerTest` classes. Descriptions and testing methodologies are documented in the comments at the beginning of each test case, explaining what specific functionalities are tested.
 
 ## Main Class
 
