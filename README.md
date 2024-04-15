@@ -3,6 +3,26 @@ This project creates a social media for posting and commenting. Users can sign u
 
 The link of this GitHub project is `https://github.com/spamathur/SocialMedia`.
 
+Phase 1 submitted in Vocareum workspace by : `Abhinav Padmanabhuni`
+
+Phase 1 Distribution: 
+
+`Abhinav Padmanabhuni:`
+Worked on methods of Comment and Post classes.
+
+`Chenbo Sun:`
+Worked on UserManager class and Readme.
+
+`Sparsh Mathur:`
+Worked on creating test cases and debugging and formatting code.
+
+`Amrit Multani:`
+Worked on User and UserManager classes.
+
+`Christina Melnic:`
+Wrote interfaces and comments.
+
+
 Phase 2 submitted in Vocareum workspace by : `Abhinav Padmanabhuni`
 
 Phase 2 Distribution: 
@@ -18,7 +38,6 @@ Worked on creating test cases and debugging and formatting code.
 
 `Amrit Multani:`
 Wrote the ReadMe and helped with test cases.
-
 
 `Christina Melnic:`
 Wrote interfaces and helped with the ReadMe.
