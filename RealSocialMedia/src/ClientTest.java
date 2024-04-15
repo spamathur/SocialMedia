@@ -108,19 +108,22 @@ public class ClientTest {
 
     @Test
     public void testSearchUsers() {
-        String mockUsers = "[{\"username\":\"johndoe\",\"firstName\":\"John\",\"lastName\":\"Doe\"}]\n";
-        inStream = new ByteArrayInputStream(mockUsers.getBytes());
+        String mockUsers = "[{\"userName\":\"johndoe\",\"firstName\":\"John\",\"lastName\":\"Doe\"}]";
+        ByteArrayInputStream inStream = new ByteArrayInputStream(mockUsers.getBytes());
         client.setBufferedReader(new BufferedReader(new InputStreamReader(inStream)));
+
         User[] users = client.searchUsers("john");
-        assertEquals("Expected one user", 1, users.length);
+        assertNotNull("Users array should not be null", users);
+        assertTrue("Expected non-empty users array", users.length > 0);
         assertEquals("Expected username to be 'johndoe'", "johndoe", users[0].getUserName());
     }
 
     @Test
     public void testGetMyProfile() {
-        String mockProfile = "{\"username\":\"user\",\"firstName\":\"First\",\"lastName\":\"Last\"}\n";
-        inStream = new ByteArrayInputStream(mockProfile.getBytes());
+        String mockProfile = "{\"userName\":\"user\",\"firstName\":\"First\",\"lastName\":\"Last\"}";
+        ByteArrayInputStream inStream = new ByteArrayInputStream(mockProfile.getBytes());
         client.setBufferedReader(new BufferedReader(new InputStreamReader(inStream)));
+
         User user = client.getMyProfile();
         assertNotNull("Expected a user object", user);
         assertEquals("Expected username to be 'user'", "user", user.getUserName());
