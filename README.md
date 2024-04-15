@@ -10,15 +10,14 @@ Phase 2 Distribution:
 `Abhinav Padmanabhuni:`
 Worked on implementing a client-server connection, and making it thread safe.
 
-
 `Chenbo Sun:`
 Worked on the client-server classes.
 
 `Sparsh Mathur:`
-Worked on test cases and general debugging.
+Worked on creating test cases and debugging for issues arising in the client.
 
 `Amrit Multani:`
-Wrote the ReadMe and helped create test cases.
+Wrote the ReadMe and helped with test cases.
 
 
 `Christina Melnic:`
@@ -36,6 +35,8 @@ This is the main entry point of the application. It demonstrates the usage of th
 ### Key Methods
 
 `main(String[] args)`: The main method that demonstrates the usage of the system.
+
+Below are Phase 2 Classes:
 
 ## Server Class
 
@@ -93,3 +94,27 @@ This class handles individual client connections. It processes client requests, 
 -  Uses Gson to serialize objects(like posts, comments, user lists, etc.) into Json format before sending it back to the client.
 -  Ends the session when the appropriate commands comes in.
 -  Catches IOException
+
+Below are Phase 1 Classes:
+
+## Comment Class
+
+This class represents a comment on a post in the system. Each comment has a unique ID, a creator, content, and upvote/downvote counts.
+
+### Key Methods
+
+- `upvote()`: Increments the upvote count of the comment.
+- `downvote()`: Increments the downvote count of the comment.
+
+## CommentsManager Class
+
+This class manages all comments in the system. It provides functionality for creating, deleting, and searching for comments.
+
+### Key Methods
+
+- `createComment(String postID, String creator, String content)`: Creates a new comment on a post.
+- `deleteComment(String commentID)`: Deletes a comment from the system.
+- `findComment(String commentID)`: Finds a comment by its ID.
+- `readComments()`: Reads comment data from a file.
+- `writeComments()`: Writes comment data to a file.
+
