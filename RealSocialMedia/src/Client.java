@@ -139,6 +139,7 @@ public class Client {
             return null;
         }
     }
+    
     public void closeConnection() {
         try {
             if (isConnected) {
@@ -151,5 +152,21 @@ public class Client {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    public void setSocket(Socket socket) {
+        this.socket = socket;
+    }
+
+    public void setBufferedReader(BufferedReader bfr) {
+        this.bfr = bfr;
+    }
+
+    public void setPrintWriter(PrintWriter pw) {
+        this.pw = pw;
+    }
+
+    public void setConnected(boolean isConnected) {
+        this.isConnected = isConnected;
     }
 }
