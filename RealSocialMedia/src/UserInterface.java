@@ -83,8 +83,6 @@ public interface UserInterface {
 
     void setFollowersList(ArrayList<String> followersList); //sets follower list to given list
 
-    ArrayList<Post> getHiddenPosts(); //returns hidden posts
-
     void setHiddenPosts(ArrayList<Post> hiddenPosts); //sets hidden posts to a given list
 
 
