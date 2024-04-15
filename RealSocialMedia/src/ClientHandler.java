@@ -15,9 +15,10 @@ import com.google.gson.Gson;
  * implements runnable.
  *
  * @author Project 5 Team 3 Lab 27
- * @version March 31, 2024
+ * @version April 15, 2024
  */
-public class ClientHandler implements Runnable {
+
+public class ClientHandler implements Runnable, ClientHandlerInterface {
     private Socket clientSocket;
     private User user;
     Gson gson = new Gson();
