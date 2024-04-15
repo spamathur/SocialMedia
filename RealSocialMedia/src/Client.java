@@ -16,8 +16,9 @@ import java.util.List;
  * communicates with the server.
  *
  * @author Project 5 Team 3 Lab 27
- * @version March 31, 2024
+ * @version April 15, 2024
  */
+
 public class Client {
     private Socket socket;
     private BufferedReader bfr;
@@ -103,7 +104,7 @@ public class Client {
         List<User> userList = gson.fromJson(json, USER_LIST_TYPE);
         return userList.toArray(new User[0]);  // Convert List to Array
     }
-    
+
     public void hidePost(String postID) {
         sendRequest(String.format("9;%s", postID));
     }
@@ -138,7 +139,7 @@ public class Client {
             return null;
         }
     }
-    
+
     public void closeConnection() {
         try {
             if (isConnected) {
