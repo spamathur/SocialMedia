@@ -44,7 +44,6 @@ Wrote the ReadMe and helped with test cases.
 `Christina Melnic:`
 Wrote interfaces and helped with the ReadMe.
 
-
 To run the code, open Main.java and execute it as your Java application's entry point. Inside Main.java, you will find some commented-out code snippets. Uncomment these lines to test various functionalities of the program.
 
 Following contents describe the main functions of the codes and brief explanations for key methods in each class.
@@ -68,6 +67,8 @@ This is the main entry point of the application. It demonstrates the usage of th
 ## Server Class
 
 This class accepts incoming client connections and uses a new ClientHandler thread to handle communication for each client.
+
+### Note that Server does not have an interface or test cases in our program as it does not have any methods besides the main method
 
 ### Key Methods
 
