@@ -47,6 +47,10 @@ To run the code, open Main.java and execute it as your Java application's entry 
 
 Following contents describe the main functions of the codes and brief explanations for key methods in each class.
 
+## IO Functionality Tests:
+
+I/O functionality is thoroughly tested within the `ClientTest` and `ClientHandlerTest` classes. Detailed descriptions and testing methodologies are documented in the comments at the beginning of each test case, explaining how specific functionalities are tested.
+
 ## Main Class
 
 This is the main entry point of the application. It demonstrates the usage of the `FileManager`, `UsersManager`, and other classes in the system.
