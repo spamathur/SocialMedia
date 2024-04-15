@@ -8,14 +8,22 @@ Phase 2 submitted in Vocareum workspace by : `Abhinav Padmanabhuni`
 Phase 2 Distribution: 
 
 `Abhinav Padmanabhuni:`
+Worked on implenting a client-server connection, and making it thread safe.
+
 
 `Chenbo Sun:`
+Worked on the client-server classes.
 
 `Sparsh Mathur:`
+Worked on test cases and general debugging.
 
 `Amrit Multani:`
+Wrote the ReadMe and helped create test cases.
+
 
 `Christina Melnic:`
+Wrote interfaces and helped with the ReadMe.
+
 
 To run the code, open Main.java and execute it as your Java application's entry point. Inside Main.java, you will find some commented-out code snippets. Uncomment these lines to test various functionalities of the program.
 
