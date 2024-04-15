@@ -36,7 +36,7 @@ This is the main entry point of the application. It demonstrates the usage of th
 
 `main(String[] args)`: The main method that demonstrates the usage of the system.
 
-# Below are Phase 2 Classes:
+# Phase 2 Classes:
 
 ## Server Class
 
@@ -95,7 +95,7 @@ This class handles individual client connections. It processes client requests, 
 -  Ends the session when the appropriate commands comes in.
 -  Catches IOException
 
-# Below are Phase 1 Classes:
+# Phase 1 Classes:
 
 ## Comment Class
 
