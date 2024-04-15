@@ -14,7 +14,7 @@ Worked on implementing a client-server connection, and making it thread safe.
 Worked on the client-server classes.
 
 `Sparsh Mathur:`
-Worked on creating test cases and debugging for issues arising in the client.
+Worked on creating test cases and debugging and formatting code.
 
 `Amrit Multani:`
 Wrote the ReadMe and helped with test cases.
@@ -36,7 +36,7 @@ This is the main entry point of the application. It demonstrates the usage of th
 
 `main(String[] args)`: The main method that demonstrates the usage of the system.
 
-Below are Phase 2 Classes:
+# Below are Phase 2 Classes:
 
 ## Server Class
 
