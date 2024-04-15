@@ -1,7 +1,7 @@
 # SocialMedia
 This project creates a social media for posting and commenting. Users can sign up and login the social media and get their own accounts. Users can send text posts on the media, and they can follow other users to see their posts.
 
-The link of this GitHub project is `https://github.com/spamathur/SocialMedia`.
+The link of this GitHub project is [https://github.com/spamathur/SocialMedia](https://github.com/spamathur/SocialMedia).
 
 Phase 1 submitted in Vocareum workspace by : `Abhinav Padmanabhuni`
 
