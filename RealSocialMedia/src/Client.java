@@ -24,6 +24,7 @@ public class Client {
     private PrintWriter pw;
     private boolean isConnected = false;
     public static Gson gson = new Gson();
+    private static final Type USER_LIST_TYPE = new TypeToken<List<User>>() {}.getType();
 
     public Client() {
         try {
@@ -99,12 +100,10 @@ public class Client {
     public User[] searchUsers(String searchString) {
         sendRequest(String.format("16;%s", searchString));
         String json = getResponse();
-        Type listType = new TypeToken<List<User>>() {
-        }.getType();
-        List<User> users = gson.fromJson(json, listType);
-        return users.toArray(new User[0]);
+        List<User> userList = gson.fromJson(json, USER_LIST_TYPE);
+        return userList.toArray(new User[0]);  // Convert List to Array
     }
-
+    
     public void hidePost(String postID) {
         sendRequest(String.format("9;%s", postID));
     }
