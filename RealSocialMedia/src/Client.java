@@ -19,7 +19,7 @@ import java.util.List;
  * @version April 15, 2024
  */
 
-public class Client {
+public class Client implements ClientInterface {
     private Socket socket;
     private BufferedReader bfr;
     private PrintWriter pw;
