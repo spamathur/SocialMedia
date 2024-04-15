@@ -8,7 +8,7 @@ Phase 2 submitted in Vocareum workspace by : `Abhinav Padmanabhuni`
 Phase 2 Distribution: 
 
 `Abhinav Padmanabhuni:`
-Worked on implenting a client-server connection, and making it thread safe.
+Worked on implementing a client-server connection, and making it thread safe.
 
 
 `Chenbo Sun:`
