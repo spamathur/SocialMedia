@@ -1,6 +1,8 @@
 import java.io.*;
-import java.util.*;
-
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.List;
 public class UsersManager {
     private static final String FILENAME = "users.txt";
     private static List<User> usersList = Collections.synchronizedList(new ArrayList<>());
@@ -50,10 +52,10 @@ public class UsersManager {
             while (line != null) {
                 String[] userContents = line.split(";", -1);
                 User user = new User(userContents[0], userContents[1], userContents[2], userContents[3], userContents[4]);
-                if (!userContents[5].isEmpty()) {
+                if (!userContents[5].isEmpty()){
                     user.setFriendsList(new ArrayList<>(Arrays.asList(userContents[5].split(","))));
                 }
-                if (!userContents[6].isEmpty()) {
+                if (!userContents[6].isEmpty()){
                     user.setBlockedList(new ArrayList<>(Arrays.asList(userContents[6].split(","))));
                 }
                 if (!userContents[7].isEmpty()) {
@@ -66,7 +68,7 @@ public class UsersManager {
                         user.hidePost(postID);
                     }
                 }
-                if (!userContents[9].isEmpty()) {
+                if (!userContents[9].isEmpty()){
                     user.setFollowersList(new ArrayList<>(Arrays.asList(userContents[9].split(","))));
                 }
                 usersList.add(user);
@@ -81,14 +83,5 @@ public class UsersManager {
                 pw.println(user.toString());
             }
         }
-    }
-
-    // A method to clear all users (for testing purposes)
-    public static void clearUsers() {
-        usersList.clear();
-    }
-
-    public static List<User> getUsersList() {
-        return usersList;
     }
 }

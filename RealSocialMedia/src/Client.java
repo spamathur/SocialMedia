@@ -16,16 +16,14 @@ import java.util.List;
  * communicates with the server.
  *
  * @author Project 5 Team 3 Lab 27
- * @version April 15, 2024
+ * @version March 31, 2024
  */
-
-public class Client implements ClientInterface {
+public class Client {
     private Socket socket;
     private BufferedReader bfr;
     private PrintWriter pw;
     private boolean isConnected = false;
     public static Gson gson = new Gson();
-    private static final Type USER_LIST_TYPE = new TypeToken<List<User>>() {}.getType();
 
     public Client() {
         try {
@@ -101,16 +99,18 @@ public class Client implements ClientInterface {
     public User[] searchUsers(String searchString) {
         sendRequest(String.format("16;%s", searchString));
         String json = getResponse();
-        List<User> userList = gson.fromJson(json, USER_LIST_TYPE);
-        return userList.toArray(new User[0]);  // Convert List to Array
+        Type listType = new TypeToken<List<User>>() {
+        }.getType();
+        List<User> users = gson.fromJson(json, listType);
+        return users.toArray(new User[0]);
     }
 
     public void hidePost(String postID) {
         sendRequest(String.format("9;%s", postID));
     }
 
-    public void createPost(String content) {
-        sendRequest(String.format("7;%s", content));
+    public void createPost(String content, String img) {
+        sendRequest(String.format("7;%s;%s", content, img));
     }
 
     public void createComment(String postID, String commentString) {
@@ -139,7 +139,6 @@ public class Client implements ClientInterface {
             return null;
         }
     }
-
     public void closeConnection() {
         try {
             if (isConnected) {
@@ -153,7 +152,6 @@ public class Client implements ClientInterface {
             e.printStackTrace();
         }
     }
-
     public void setSocket(Socket socket) {
         this.socket = socket;
     }

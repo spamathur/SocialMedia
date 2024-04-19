@@ -1,37 +1,26 @@
 import java.util.UUID;
 
-/**
- * A class dedicated to creating and modifying comments
- * <p>
- * Purdue University -- CS18000 -- Spring 2024
- *
- * @author Project 5 Team 3 Lab 27
- * @version March 31, 2024
- */
-
-public class Comment implements CommentInterface {
+public class Comment {
     private String commentID;
     private String postAuthor;
     private String creator;
     private String content;
-    private int upvotes;
-    private int downvotes;
+    private int votes;
 
     public Comment(String creator, String content, String postAuthor) {
         this.creator = creator;
         this.content = content;
         this.postAuthor = postAuthor;
         this.commentID = UUID.randomUUID().toString();
-        this.upvotes = 0;
-        this.downvotes = 0;
+        this.votes = 0;
     }
 
     public void upvote() {
-        upvotes++;
+        votes++;
     }
 
     public void downvote() {
-        downvotes++;
+        votes--;
     }
 
     public String getPostAuthor() {
@@ -66,23 +55,15 @@ public class Comment implements CommentInterface {
         this.content = content;
     }
 
-    public int getUpvotes() {
-        return upvotes;
+    public int getVotes() {
+        return votes;
     }
 
-    public void setUpvotes(int upvotes) {
-        this.upvotes = upvotes;
-    }
-
-    public int getDownvotes() {
-        return downvotes;
-    }
-
-    public void setDownvotes(int downvotes) {
-        this.downvotes = downvotes;
+    public void setVotes(int votes) {
+        this.votes = votes;
     }
 
     public String toString() {
-        return String.format("%s;%s;%s;%s;%s;%s", commentID, creator, content, postAuthor, upvotes, downvotes);
+        return String.format("%s;%s;%s;%s;%s", commentID, creator, content, postAuthor, votes);
     }
 }

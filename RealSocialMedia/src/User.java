@@ -54,8 +54,8 @@ public class User {
         hiddenPosts.add(post);
     }
 
-    public void createPost(String content) {
-        addMyPosts(PostsManager.createPost(this.userName, content));
+    public void createPost(String content, String img) {
+        addMyPosts(PostsManager.createPost(this.userName, content, img));
     }
 
     public void createComment(String postID, String commentString) {

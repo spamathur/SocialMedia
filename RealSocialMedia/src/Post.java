@@ -10,20 +10,20 @@ import java.util.UUID;
  * @version March 31, 2024
  */
 
-public class Post implements PostInterface {
+public class Post  {
     private String postID;
     private String creator;
     private String content;
-    private int upvotes;
-    private int downvotes;
+    private String img;
+    private int votes;
     private ArrayList<Comment> comments = new ArrayList<>();
 
-    public Post(String creator, String content) {
+    public Post(String creator, String content, String img) {
         this.creator = creator;
         this.content = content;
+        this.img = img;
         this.postID = UUID.randomUUID().toString();
-        this.upvotes = 0;
-        this.downvotes = 0;
+        this.votes = 0;
     }
 
     public void addComment(Comment comment) {
@@ -31,11 +31,11 @@ public class Post implements PostInterface {
     }
 
     public void upvote() {
-        upvotes++;
+        votes++;
     }
 
     public void downvote() {
-        downvotes++;
+        votes--;
     }
 
     public String getPostID() {
@@ -62,20 +62,12 @@ public class Post implements PostInterface {
         this.content = content;
     }
 
-    public int getUpvotes() {
-        return upvotes;
+    public int getVotes() {
+        return votes;
     }
 
-    public void setUpvotes(int upvotes) {
-        this.upvotes = upvotes;
-    }
-
-    public int getDownvotes() {
-        return downvotes;
-    }
-
-    public void setDownvotes(int downvotes) {
-        this.downvotes = downvotes;
+    public void setVotes(int votes) {
+        this.votes = votes;
     }
 
     public ArrayList<Comment> getComments() {
@@ -84,6 +76,14 @@ public class Post implements PostInterface {
 
     public void setComments(ArrayList<Comment> comments) {
         this.comments = comments;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 
     public String toString() {
@@ -97,7 +97,7 @@ public class Post implements PostInterface {
                     commentsString = String.format("%s%s,", commentsString, comment.getCommentID());
             }
         }
-        return String.format("%s;%s;%s;%s;%s;%s", postID, creator, content, upvotes, downvotes, commentsString);
+        return String.format("%s;%s;%s;%s;%s;%s", postID, creator, content, img, votes, commentsString);
     }
 
 }

@@ -12,9 +12,8 @@ import java.net.Socket;
  * client.
  *
  * @author Project 5 Team 3 Lab 27
- * @version April 15, 2024
+ * @version March 31, 2024
  */
-
 public class Server {
     public static void main(String[] args) {
         try (ServerSocket serverSocket = new ServerSocket(4242)) {

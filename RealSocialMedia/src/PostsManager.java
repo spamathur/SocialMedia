@@ -13,7 +13,7 @@ import java.util.List;
  * @version March 31, 2024
  */
 
-public class PostsManager implements PostsManagerInterface {
+public class PostsManager {
     private static String FILENAME = "posts.txt";
     private static List<Post> postsList = Collections.synchronizedList(new ArrayList<>());
 
@@ -26,15 +26,15 @@ public class PostsManager implements PostsManagerInterface {
             if (post.getPostID().equals(postID))
                 return post;
         }
-        return new Post("","");
+        return new Post("","", "");
     }
 
     public static List<Post> getPostsList() {
         return postsList;
     }
 
-    public static Post createPost(String creator, String content){
-        Post post = new Post(creator, content);
+    public static Post createPost(String creator, String content, String img){
+        Post post = new Post(creator, content, img);
         postsList.add(post);
         return post;
     }
@@ -44,12 +44,11 @@ public class PostsManager implements PostsManagerInterface {
             String line = bfr.readLine();
             while (line != null) {
                 String[] postContents = line.split(";", -1);
-                Post post = new Post(postContents[1], postContents[2]);
+                Post post = new Post(postContents[1], postContents[2], postContents[3]);
                 post.setPostID(postContents[0]);
-                post.setUpvotes(Integer.parseInt(postContents[3]));
-                post.setDownvotes(Integer.parseInt(postContents[4]));
+                post.setVotes(Integer.parseInt(postContents[4]));
                 if (!postContents[5].isEmpty()) {
-                    for (String commentID : postContents[5].split(",")) {
+                    for (String commentID : postContents[6].split(",")) {
                         post.addComment(CommentsManager.findComment(commentID));
                     }
                 }

@@ -8,8 +8,7 @@ public class Main {
     public static void main(String[] args) throws IOException, UserNameTakenException, LogInFailedException {
         Client abhi = new Client();
         Client vivi = new Client();
-        abhi.logIn("aabhii", "pass");
+        abhi.logIn("abhi", "pass");
         vivi.logIn("vivi", "pass");
-        vivi.unblockFriend("aabhii");
     }
 }

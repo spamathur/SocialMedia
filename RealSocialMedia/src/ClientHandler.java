@@ -15,10 +15,9 @@ import com.google.gson.Gson;
  * implements runnable.
  *
  * @author Project 5 Team 3 Lab 27
- * @version April 15, 2024
+ * @version March 31, 2024
  */
-
-public class ClientHandler implements Runnable, ClientHandlerInterface {
+public class ClientHandler implements Runnable {
     private Socket clientSocket;
     private User user;
     Gson gson = new Gson();
@@ -86,7 +85,7 @@ public class ClientHandler implements Runnable, ClientHandlerInterface {
                         user.unblockFriend(parameters.get(0));
                         break;
                     case 7:
-                        user.createPost(parameters.get(0));
+                        user.createPost(parameters.get(0), parameters.get(1));
                         break;
                     case 8:
                         user.createComment(parameters.get(0), parameters.get(1));
