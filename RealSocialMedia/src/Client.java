@@ -54,6 +54,9 @@ public class Client {
         return posts.toArray(new Post[0]);
     }
 
+    public void deleteComment(String postID, String commentID){sendRequest(String.format("19;%s;%s", postID, commentID));}
+
+
     public void upvotePost(String postID) {
         sendRequest(String.format("10;%s", postID));
     }
@@ -119,6 +122,12 @@ public class Client {
 
     public User getMyProfile() {
         sendRequest("17;");
+        String json = getResponse();
+        return gson.fromJson(json, User.class);
+    }
+
+    public User findUser(String username) {
+        sendRequest(String.format("20;%s", username));
         String json = getResponse();
         return gson.fromJson(json, User.class);
     }

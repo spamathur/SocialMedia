@@ -21,19 +21,30 @@ public class PostsManager {
         PostsManager.postsList = postsList;
     }
 
-    public static synchronized Post findPost(String postID) {
-        for (Post post : postsList){
+    public static void deleteComment(String postID, String commentID) {
+        Post post = findPost(postID);
+        ArrayList<Comment> comments = post.getComments();
+        for (int i = 0; i < comments.size(); i++) {
+            if (comments.get(i).getCommentID().equals(commentID)) {
+                comments.remove(i);
+                break;
+            }
+        }
+    }
+
+    public static Post findPost(String postID) {
+        for (Post post : postsList) {
             if (post.getPostID().equals(postID))
                 return post;
         }
-        return new Post("","", "");
+        return new Post("", "", "");
     }
 
     public static List<Post> getPostsList() {
         return postsList;
     }
 
-    public static Post createPost(String creator, String content, String img){
+    public static Post createPost(String creator, String content, String img) {
         Post post = new Post(creator, content, img);
         postsList.add(post);
         return post;
@@ -48,7 +59,7 @@ public class PostsManager {
                 post.setPostID(postContents[0]);
                 post.setVotes(Integer.parseInt(postContents[4]));
                 if (!postContents[5].isEmpty()) {
-                    for (String commentID : postContents[6].split(",")) {
+                    for (String commentID : postContents[5].split(",")) {
                         post.addComment(CommentsManager.findComment(commentID));
                     }
                 }
@@ -59,7 +70,7 @@ public class PostsManager {
     }
 
     public static void writePosts() throws IOException {
-        try(PrintWriter pw = new PrintWriter(new FileWriter(FILENAME))){
+        try (PrintWriter pw = new PrintWriter(new FileWriter(FILENAME))) {
             for (Post post : postsList) {
                 pw.println(post.toString());
             }

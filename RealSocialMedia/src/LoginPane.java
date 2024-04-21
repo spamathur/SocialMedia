@@ -66,7 +66,7 @@ public class LoginPane extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             String command = e.getActionCommand();
-            if (command.equals("button1")) {
+            if (command.equals("Login")) {
                 String username = txtUsername.getText();
                 boolean isEmpty = false;
                 if(username == null){
@@ -94,7 +94,7 @@ public class LoginPane extends JPanel {
                     }
                 }
             }
-            if (command.equals("button2")) {
+            if (command.equals("Sign Up")) {
                 MainGUIController.cardLayout.show(MainGUIController.content, "signup");
             }
         }

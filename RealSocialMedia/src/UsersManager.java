@@ -39,7 +39,7 @@ public class UsersManager {
         for (User user : usersList) {
             if (user.getFirstName().toLowerCase().contains(searchString.toLowerCase()) || user.getLastName().toLowerCase().contains(searchString.toLowerCase())
                     || user.getUserName().toLowerCase().contains(searchString.toLowerCase())) {
-                if (!user.getBlockedList().contains(myUserName))
+                if (!user.getBlockedList().contains(myUserName) && !user.getUserName().equals(myUserName))
                     matchedUsers.add(user);
             }
         }

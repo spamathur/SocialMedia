@@ -1,23 +1,17 @@
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import java.awt.event.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 
-public class ProfileComponent extends JPanel {
-    public User user;
-    public SideBySideButtons buttons;
-    public boolean isFriended;
-    public boolean isBlocked;
-    public String button1Text;
-    public String button2Text;
-    public ProfileComponent(User user, boolean isFriended, boolean isBlocked) {
-        this.isFriended = isFriended;
-        this.isBlocked = isBlocked;
-        this.user = user;
+public class MyProfileComponent extends JPanel {
+
+    public static User user;
+    public MyProfileComponent() {
+        User user = MainGUIController.client.getMyProfile();
+        MyProfileComponent.user = user;
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 20));
         setBackground(Color.WHITE);
@@ -70,17 +64,7 @@ public class ProfileComponent extends JPanel {
         nameLabel.setFont(new Font("Helvetica", Font.ITALIC, 13));
         namePanel.add(nameLabel);
 
-        if (isFriended)
-            button1Text = "Remove Friend";
-        else
-            button1Text = "Add Friend";
-
-        if (isBlocked)
-            button2Text = "Unblock Friend";
-        else
-            button2Text = "Block Friend";
-
-        buttons = new SideBySideButtons(button1Text, button2Text,
+        SideBySideButtons buttons = new SideBySideButtons("My Posts", "Edit Profile",
                 new Color(0, 123, 255), new Color(99, 99, 99), actionListener);
 
         add(usernameLabel);
@@ -110,28 +94,15 @@ public class ProfileComponent extends JPanel {
         @Override
         public void actionPerformed(ActionEvent e) {
             String command = e.getActionCommand();
-            if (command.equals("Add Friend")) {
-                if (button2Text.equals("Unblock Friend")){
-                    JOptionPane.showMessageDialog(null, "Cannot add a blocked user!", "Error!", JOptionPane.ERROR_MESSAGE);
-                }
-                else {
-                    MainGUIController.client.addFriend(user.getUserName());
-                    MainGUIController.refresh("userprofile", new UserProfilePane(user));
-                }
+
+            if (command.equals("My Posts")) {
+                MainGUIController.content.add(new MyPostsPane(), "myPosts");
+                MainGUIController.cardLayout.show(MainGUIController.content,"myPosts");
             }
-            if (command.equals("Block Friend")) {
-                MainGUIController.client.blockFriend(user.getUserName());
-                MainGUIController.refresh("userprofile", new UserProfilePane(user));
+            if (command.equals("button2")) {
+
             }
-            if (command.equals("Remove Friend")) {
-                MainGUIController.client.removeFriend(user.getUserName());
-                MainGUIController.refresh("userprofile", new UserProfilePane(user));
-            }
-            if (command.equals("Unblock Friend")) {
-                MainGUIController.client.unblockFriend(user.getUserName());
-                MainGUIController.refresh("userprofile", new UserProfilePane(user));
-            }
+
         }
     };
-
 }

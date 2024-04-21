@@ -41,7 +41,7 @@ public class MainGUIController extends JFrame implements Runnable {
     public static void refresh(String identifier, JPanel panel){
         Component[] components = content.getComponents();
         for (Component comp : components) {
-            if (comp.getName() != null && comp.getName().equals("home")) {
+            if (comp.getName() != null && comp.getName().equals(identifier)) {
                 MainGUIController.content.remove(comp);
             }
         }

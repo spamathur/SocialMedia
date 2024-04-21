@@ -5,6 +5,7 @@ import java.io.PrintWriter;
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Arrays;
+
 import com.google.gson.Gson;
 
 /**
@@ -21,9 +22,12 @@ public class ClientHandler implements Runnable {
     private Socket clientSocket;
     private User user;
     Gson gson = new Gson();
+
     public ClientHandler(Socket socket) {
         this.clientSocket = socket;
     }
+
+    final Object gatekeeper = new Object();
 
     public void run() {
         try (BufferedReader bfr = new BufferedReader(new InputStreamReader(clientSocket.getInputStream()));
@@ -48,8 +52,7 @@ public class ClientHandler implements Runnable {
                     } catch (UserNameTakenException e) {
                         pw.println("false");
                     }
-                }
-                else if (action == 2) {
+                } else if (action == 2) {
                     try {
                         user = UsersManager.logIn(authentication.get(0), authentication.get(1));
                         pw.println("true");
@@ -122,9 +125,15 @@ public class ClientHandler implements Runnable {
                         break;
                     case 18:
                         endSession = true;
+                    case 19:
+                        user.deleteComment(parameters.get(0), parameters.get(1));
+                    case 20:
+                        User userFound = user.findUser(parameters.get(0));
+                        pw.println(gson.toJson(userFound));
                 }
                 FileManager.writeAll();
             }
+
 
         } catch (IOException e) {
             e.printStackTrace();

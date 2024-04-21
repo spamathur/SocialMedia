@@ -28,7 +28,7 @@ public class CommentsManager {
             if (comment.getCommentID().equals(commentID))
                 return comment;
         }
-        return null;
+        return new Comment("", "", "");
     }
 
     public static void readComments() throws IOException {

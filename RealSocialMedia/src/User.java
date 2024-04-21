@@ -22,6 +22,14 @@ public class User {
 
     // USER METHODS:
 
+    public User findUser(String username){
+        return UsersManager.findUser(username);
+    }
+
+    public void deleteComment(String postID, String commentID){
+        PostsManager.deleteComment(postID, commentID);
+    }
+
     public void addFriend(String username) {
         friendsList.add(username);
         User userFriended = UsersManager.findUser(username);
@@ -78,8 +86,8 @@ public class User {
     }
 
     public void downvoteComment(String commentID) {
-        Post post = PostsManager.findPost(commentID);
-        post.downvote();
+        Comment comment = CommentsManager.findComment(commentID);
+        comment.downvote();
     }
 
     public ArrayList<Post> getMyFriendsPosts() {

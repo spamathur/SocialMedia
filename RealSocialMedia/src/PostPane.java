@@ -59,8 +59,8 @@ public class PostPane extends JPanel {
                 try {
                     image = postPic.getAbsolutePath();
                 } catch (Exception f) {
-                    f.printStackTrace();
-                    image = "/";
+                    JOptionPane.showMessageDialog(null, "Please select an image!", "Error", JOptionPane.ERROR_MESSAGE);
+                    return;
                 }
                 if (caption.isEmpty()) {
                     txtCaption.setText("");
@@ -76,8 +76,13 @@ public class PostPane extends JPanel {
                 JFileChooser chooser = new JFileChooser();
                 int returnVal = chooser.showOpenDialog(null);
                 if (returnVal == JFileChooser.APPROVE_OPTION) {
-                    postPic = chooser.getSelectedFile();
-                    lblImageSelected.setText(chooser.getSelectedFile().getName());
+                    File selectedFile = chooser.getSelectedFile();
+                    if (isValidImageFile(selectedFile)) {
+                        postPic = selectedFile;
+                        lblImageSelected.setText(selectedFile.getName());
+                    } else {
+                        JOptionPane.showMessageDialog(null, "Selected file is not a valid image format!", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
                 }
             }
         }
@@ -91,5 +96,16 @@ public class PostPane extends JPanel {
         button.setBackground(bgColor);
         button.setForeground(Color.WHITE);
         return button;
+    }
+
+    private boolean isValidImageFile(File file) {
+        String[] validExtensions = {".jpg", ".jpeg", ".png", ".gif", ".bmp"};
+        String fileName = file.getName().toLowerCase();
+        for (String extension : validExtensions) {
+            if (fileName.endsWith(extension)) {
+                return true;
+            }
+        }
+        return false;
     }
 }
