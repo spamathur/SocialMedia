@@ -68,7 +68,7 @@ Edited profile codes and updated the program
 `Christina Melnic:`
 Worked on search pane in Gui.
 
-
+## Run the code
 
 To run the code, open Main.java and execute it as your Java application's entry point. Inside Main.java, you will find some commented-out code snippets. Uncomment these lines to test various functionalities of the program.
 
