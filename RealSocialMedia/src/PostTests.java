@@ -32,7 +32,7 @@ public class PostTests {
 
     public static class TestCase {
         // Post object to be tested
-        private Post post = new Post("creator", "This is a test post");
+        private Post post = new Post("creator", "This is a test post", "profile.png");
 
         // Test to check post functionality of initialized post
         @Test(timeout = 1000)
@@ -40,8 +40,7 @@ public class PostTests {
             Assert.assertNotNull("Post ID should not be null after creation", post.getPostID());
             Assert.assertEquals("Creator should match constructor argument", "creator", post.getCreator());
             Assert.assertEquals("Content should match constructor argument", "This is a test post", post.getContent());
-            Assert.assertEquals("Initial upvotes should be 0", 0, post.getUpvotes());
-            Assert.assertEquals("Initial downvotes should be 0", 0, post.getDownvotes());
+            Assert.assertEquals("Initial votes should be 0", 0, post.getVotes());
             Assert.assertTrue("Initial comments list should be empty", post.getComments().isEmpty());
         }
 
@@ -54,12 +53,12 @@ public class PostTests {
             Assert.assertEquals("Comments list should contain the added comment", comment, post.getComments().get(0));
         }
 
-        // Test to check post upvotes
+        // Test to check post upVotes
         @Test(timeout = 1000)
         public void testUpvote() {
             post.upvote();
             post.upvote();
-            Assert.assertEquals("Upvotes should be incremented", 2, post.getUpvotes());
+            Assert.assertEquals("Upvotes should be implemented", 2, post.getVotes());
         }
 
         // Test to check post downvotes
@@ -67,7 +66,7 @@ public class PostTests {
         public void testDownvote() {
             post.downvote();
             post.downvote();
-            Assert.assertEquals("Downvotes should be incremented", 2, post.getDownvotes());
+            Assert.assertEquals("Downvotes should be implemented", -2, post.getVotes());
         }
 
         // Test to check set and get content methods
