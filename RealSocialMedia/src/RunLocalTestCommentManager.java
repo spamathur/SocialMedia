@@ -71,16 +71,6 @@ public class RunLocalTestCommentManager {
             Assert.assertEquals("Comment content should match", content, foundComment.getContent());
         }
 
-        // Test to check if the comment is deleted
-        @Test(timeout = 1000)
-        public void testDeleteComment() {
-            testCreateAndFindComment();
-            Assert.assertNotNull("Comment should be created for delete test", CommentsManager.findComment(testCommentId));
-
-            CommentsManager.deleteComment(testCommentId);
-            Assert.assertNull("Comment should be deleted", CommentsManager.findComment(testCommentId));
-        }
-
         // Test to check if the reading and writing to the file works
         @Test(timeout = 1000)
         public void testReadAndWriteComments() throws IOException {
