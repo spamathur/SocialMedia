@@ -85,6 +85,14 @@ This is the main entry point of the application. It demonstrates the usage of th
 
 `main(String[] args)`: The main method that demonstrates the usage of the system.
 
+## Test Cases:
+
+All functionalities are tested using the following test classes: UserTest, UserManagerTest, PostManagerTest, PostTest, FileManagerTest, ClientTest, ClientHandlerTest, RunLocalTestCommentManager, and RunLocalTestComments. These test cases utilize JUnit 4 for execution.
+
+### Make sure to import a GSON library before executing `ClientTest` and `ClientHandlerTest`.
+
+Before executing the ClientTest and ClientHandlerTest, ensure the GSON library is imported. Download the gson-2.10.1.jar file from [https://repo1.maven.org/maven2/com/google/code/gson/gson/2.10.1/](https://repo1.maven.org/maven2/com/google/code/gson/gson/2.10.1/) and import the downloaded file as a library.
+
 
 # Phase 3 Classes:
 
