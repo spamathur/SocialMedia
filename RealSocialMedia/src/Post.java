@@ -10,7 +10,7 @@ import java.util.UUID;
  * @version March 31, 2024
  */
 
-public class Post  {
+public class Post implements PostInterface {
     private String postID;
     private String creator;
     private String content;
