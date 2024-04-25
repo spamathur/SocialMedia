@@ -54,7 +54,7 @@ Phase 3 presentation submmitted by: ``
 Phase 3 Distribution:
 
 `Abhinav Padmanabhuni`
-Worked on designing and constructing GUI. Updated some previous files.
+Worked on designing and constructing GUI. Updated some files.
 
 `Chenbo Sun:`
 Worked on the documentation of Readme.
