@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class CommentsManager {
+public class CommentsManager implements CommentsManagerInterface {
     private static final String FILENAME = "comments.txt";
     private static List<Comment> commentsList = Collections.synchronizedList(new ArrayList<>());
 
@@ -51,5 +51,13 @@ public class CommentsManager {
                 pw.println(comment.toString());
             }
         }
+    }
+
+    public static List<Comment> getCommentsList() {
+        return commentsList;
+    }
+
+    public static void setCommentsList(List<Comment> commentsList) {
+        CommentsManager.commentsList = commentsList;
     }
 }
