@@ -28,13 +28,9 @@ public interface PostInterface {
 
     void setContent(String content); //sets content
 
-    int getUpvotes(); //returns upvotes
+    int getVotes(); //returns votes
 
-    void setUpvotes(int upvotes); //sets upvote to given int
-
-    int getDownvotes(); //returns downvotes
-
-    void setDownvotes(int downvotes); //sets downvotes to given int
+    void setVotes(int votes); //sets votes to given int
 
     ArrayList<Comment> getComments(); //returns comments
 
