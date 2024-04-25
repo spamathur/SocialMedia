@@ -44,6 +44,26 @@ Wrote the ReadMe and helped with test cases.
 `Christina Melnic:`
 Wrote interfaces and helped with the ReadMe.
 
+Phase 3 submitted in Vocareum workspace by : ``
+
+Phase 3 Distribution:
+
+`Abhinav Padmanabhuni:`
+
+
+`Chenbo Sun:`
+
+
+`Sparsh Mathur:`
+
+
+`Amrit Multani:`
+
+
+`Christina Melnic:`
+
+
+
 To run the code, open Main.java and execute it as your Java application's entry point. Inside Main.java, you will find some commented-out code snippets. Uncomment these lines to test various functionalities of the program.
 
 Following contents describe the main functions of the codes and brief explanations for key methods in each class.
@@ -61,6 +81,168 @@ This is the main entry point of the application. It demonstrates the usage of th
 ### Key Methods
 
 `main(String[] args)`: The main method that demonstrates the usage of the system.
+
+
+# Phase 3 Classes:
+
+## MyProfileComponent.java
+
+The component that manages the user profile view, allowing users to view and edit their profile details.
+
+### Key Methods
+- `editProfile()`: Edits the user's profile details.
+- `viewProfile()`: Displays the user's profile information.
+
+## BlankComment.java
+
+Defines a placeholder for comments, used in the UI when there are no comments to display.
+
+### Key Methods
+- `displayEmptyComment()`: Shows an empty comment template.
+
+## BlankPost.java
+
+Serves as a default layout for posts when there are no posts to display.
+
+### Key Methods
+- `displayEmptyPost()`: Displays a blank post template.
+
+## CommentComponent.java
+
+Manages the display and interaction of individual comments within the application.
+
+### Key Methods
+- `postComment()`: Allows users to post new comments.
+- `editComment()`: Enables editing of existing comments.
+
+## EditProfilePane.java
+
+Provides a user interface for editing the details of a user's profile.
+
+### Key Methods
+- `saveChanges()`: Saves the updated profile details.
+- `cancelChanges()`: Discards any changes made to the profile.
+
+## FullPostPane.java
+
+Displays the full details of a post, including comments and reactions.
+
+### Key Methods
+- `displayFullPost()`: Shows complete post information.
+- `updateReactions()`: Updates the reaction counts on a post.
+
+## HomePane.java
+
+The main dashboard view for the user after logging in, showing the news feed.
+
+### Key Methods
+- `refreshFeed()`: Refreshes the news feed to show the latest posts and comments.
+- `searchUser()`: Allows the user to search for other users by name.
+
+## LoginPane.java
+
+Interface for user login.
+
+### Key Methods
+- `login()`: Authenticates the user credentials.
+- `resetPassword()`: Provides the option to reset a forgotten password.
+
+## MainGUIController.java
+
+Central controller for managing the user interface and interactions across the application.
+
+### Key Methods
+- `initialize()`: Sets up the initial state of the GUI.
+- `handleEvent()`: General method to handle various UI events.
+
+## MyPostsPane.java
+
+Displays a list of posts made by the logged-in user.
+
+### Key Methods
+- `displayMyPosts()`: Shows posts created by the user.
+- `deletePost()`: Allows the user to delete one of their posts.
+
+## UserComponent.java
+
+Manages the display and functionality related to individual user profiles visible to others.
+
+### Key Methods
+- `displayUserProfile()`: Shows the profile details of a specific user.
+- `sendFriendRequest()`: Allows sending friend requests to the user.
+
+## NavigationPane.java
+
+Provides navigation between different parts of the application like Home, My Profile, Settings, etc.
+
+### Key Methods
+- `navigateToHome()`: Transitions to the home screen.
+- `navigateToProfile()`: Goes to the user's profile page.
+
+## PostCommentComponent.java
+
+Manages the display of comments on a particular post, allowing users to interact through comments.
+
+### Key Methods
+- `postComment()`: Posts a new comment to the current viewing post.
+- `editComment()`: Allows editing an existing comment.
+
+## PostComponent.java
+
+Handles the individual post block in the user interface, including interactions like liking, sharing, and commenting.
+
+### Key Methods
+- `likePost()`: Increments the like count for the post.
+- `sharePost()`: Shares the post to other users or platforms.
+
+## PostPane.java
+
+Manages the main area where posts are displayed in the application, potentially aggregating multiple PostComponents.
+
+### Key Methods
+- `refreshPosts()`: Reloads the post feed with the latest posts.
+- `filterPosts()`: Filters posts based on certain criteria like date or popularity.
+
+## ProfileComponent.java
+
+Represents the section of the application where a user's own profile is displayed and can be edited.
+
+### Key Methods
+- `editProfile()`: Allows users to edit their own profile information.
+- `viewMyActivities()`: Displays the user's activities like posts, comments, and likes.
+
+## ProfilePane.java
+
+A specialized pane that provides an interface for user profile viewing and editing.
+
+### Key Methods
+- `updateProfileDetails()`: Updates and saves the user's profile details to the system.
+- `cancelEdits()`: Cancels any ongoing edits and reverts to the original profile data.
+
+## SearchPane.java
+
+Facilitates searching for posts, comments, or users within the application.
+
+### Key Methods
+- `searchContent()`: Performs a search based on the entered query and displays results.
+- `clearSearch()`: Clears the current search results and resets the search pane.
+
+## SideBySideButtons.java
+
+Provides a generic component that houses two buttons side by side, typically used for actions like 'Accept' and 'Reject', 'Yes' and 'No', etc.
+
+### Key Methods
+- `setLeftButtonAction()`: Assigns an action to the left button.
+- `setRightButtonAction()`: Assigns an action to the right button.
+
+## SignUpPane.java
+
+The interface for new users to create an account within the application.
+
+### Key Methods
+- `registerUser()`: Registers a new user with the provided details.
+- `validateInput()`: Checks the input fields for correctness and completeness before submission.
+
 
 # Phase 2 Classes:
 
@@ -122,6 +304,7 @@ This class handles individual client connections. It processes client requests, 
 -  Uses Gson to serialize objects(like posts, comments, user lists, etc.) into Json format before sending it back to the client.
 -  Ends the session when the appropriate commands comes in.
 -  Catches IOException
+
 
 # Phase 1 Classes:
 
