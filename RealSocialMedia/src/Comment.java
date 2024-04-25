@@ -1,6 +1,6 @@
 import java.util.UUID;
 
-public class Comment {
+public class Comment implements CommentInterface {
     private String commentID;
     private String postAuthor;
     private String creator;
