@@ -41,8 +41,7 @@ public class RunLocalTestComments {
             Assert.assertEquals("Creator should match the initialization value", creator, comment.getCreator());
             Assert.assertEquals("Content should match the initialization value", content, comment.getContent());
             Assert.assertEquals("Post author should match the initialization value", postAuthor, comment.getPostAuthor());
-            Assert.assertEquals("Initial upvotes should be 0", 0, comment.getUpvotes());
-            Assert.assertEquals("Initial downvotes should be 0", 0, comment.getDownvotes());
+            Assert.assertEquals("Initial votes should be 0", 0, comment.getVotes());
         }
 
         // Test to check if the Upvote and Downvote methods work as expected
@@ -51,10 +50,10 @@ public class RunLocalTestComments {
             Comment comment = new Comment("creator", "content", "postAuthor");
 
             comment.upvote();
-            Assert.assertEquals("Upvotes should increase by 1", 1, comment.getUpvotes());
+            Assert.assertEquals("Votes should increase by 1", 1, comment.getVotes());
 
             comment.downvote();
-            Assert.assertEquals("Downvotes should Increase by 1", 1, comment.getDownvotes());
+            Assert.assertEquals("Voes should decrease by 1", 0, comment.getVotes());
         }
 
         // Test to check if the setters work and if the getters to get those values work as well
@@ -66,20 +65,20 @@ public class RunLocalTestComments {
             comment.setContent("New content for the comment");
             comment.setPostAuthor("newPostAuthor");
             comment.upvote();
+            Assert.assertEquals("Upvotes should be updated", 1, comment.getVotes());
             comment.downvote();
+            Assert.assertEquals("Downvotes should be updated", 0, comment.getVotes());
 
             Assert.assertEquals("Creator should be updated", "newCreator", comment.getCreator());
             Assert.assertEquals("Content should be updated", "New content for the comment", comment.getContent());
             Assert.assertEquals("Post author should be updated", "newPostAuthor", comment.getPostAuthor());
-            Assert.assertEquals("Upvotes should be updated", 1, comment.getUpvotes());
-            Assert.assertEquals("Downvotes should be updated", 1, comment.getDownvotes());
         }
 
         // Test to check if the toString works as expected
         @Test(timeout = 1000)
         public void testToString() {
             Comment comment = new Comment("creator", "This is a test comment", "postAuthor");
-            String expected = comment.getCommentID() + ";" + "creator" + ";" + "This is a test comment" + ";" + "postAuthor" + ";0;0";
+            String expected = comment.getCommentID() + ";" + "creator" + ";" + "This is a test comment" + ";" + "postAuthor" + ";0";
             Assert.assertEquals("toString should return the correct format", expected, comment.toString());
         }
 
