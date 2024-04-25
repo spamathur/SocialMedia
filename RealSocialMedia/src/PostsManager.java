@@ -13,7 +13,7 @@ import java.util.List;
  * @version March 31, 2024
  */
 
-public class PostsManager {
+public class PostsManager implements PostsManagerInterface {
     private static String FILENAME = "posts.txt";
     private static List<Post> postsList = Collections.synchronizedList(new ArrayList<>());
 
