@@ -66,7 +66,7 @@ Wrote report Part One and collected Part Two. Fixed previous test cases and inte
 Edited profile codes and updated the program
 
 `Christina Melnic:`
-Worked on the search pane in GUI.
+Worked on the presentation slides.
 
 ## Run the code
 
