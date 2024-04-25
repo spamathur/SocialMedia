@@ -77,11 +77,19 @@ public class UsersManager {
         }
     }
 
+    public static List<User> getUsersList() {
+        return usersList;
+    }
+
     public static void writeUsers() throws IOException {
         try (PrintWriter pw = new PrintWriter(new FileWriter(FILENAME))) {
             for (User user : usersList) {
                 pw.println(user.toString());
             }
         }
+    }
+
+    public static void clearUsers() {
+        usersList = new ArrayList<>();
     }
 }
