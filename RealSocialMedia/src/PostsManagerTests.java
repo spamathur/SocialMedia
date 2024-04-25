@@ -58,7 +58,7 @@ public class PostsManagerTests {
         @Test(timeout = 1000)
         public void testCreateAndFindPost() {
             PostsManager.setPostsList(new ArrayList<>());
-            Post post = PostsManager.createPost("testUser", "Hello World");
+            Post post = PostsManager.createPost("testUser", "Hello World","upvote.png");
             Assert.assertNotNull("Post should be created", PostsManager.getPostsList());
 
             Post foundPost = PostsManager.findPost(post.getPostID());
@@ -69,8 +69,8 @@ public class PostsManagerTests {
         @Test(timeout = 1000)
         public void testGetPostsList() {
             PostsManager.setPostsList(new ArrayList<>());
-            PostsManager.createPost("user1", "Post 1");
-            PostsManager.createPost("user2", "Post 2");
+            PostsManager.createPost("user1", "Post 1","upvote.png");
+            PostsManager.createPost("user2", "Post 2","upvote.png");
 
             List<Post> posts = PostsManager.getPostsList();
             Assert.assertEquals("There should be 2 posts in the list", 2, posts.size());
@@ -80,7 +80,7 @@ public class PostsManagerTests {
         @Test(timeout = 1000)
         public void testReadAndWritePosts() throws IOException {
             PostsManager.setPostsList(new ArrayList<>());
-            PostsManager.createPost("testUser", "Test post content");
+            PostsManager.createPost("testUser", "Test post content","upvote.png");
             PostsManager.writePosts();
             PostsManager.setPostsList(new ArrayList<>());
             PostsManager.readPosts();

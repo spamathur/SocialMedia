@@ -27,13 +27,9 @@ public interface CommentInterface {
 
     void setContent(String content); //sets content
 
-    int getUpvotes(); //returns the amount of upvotes
+    int getVotes(); //returns the votes
 
-    void setUpvotes(int upvotes); //sets the amount of upvotes to a given int
-
-    int getDownvotes(); //returns the downvotes
-
-    void setDownvotes(int downvotes); //sets the amount of downvotes to a given int
+    void setVotes(int votes); //sets the amount of votes to a given int
 
     String toString(); //returns a comment string in the format of commentID, creator, content, postAuthor, upvotes, downvotes
 }

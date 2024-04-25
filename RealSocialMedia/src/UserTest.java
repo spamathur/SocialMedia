@@ -71,14 +71,14 @@ public class UserTest {
             User friend = new User("chenbo", "Chenbo", "Doe", "password", "profile.jpg");
             UsersManager.signUp(friend);
             user.addFriend("chenbo");
-            friend.createPost("Testing something");
+            friend.createPost("Testing something","upvote.png");
             Assert.assertEquals(1, user.getMyFriendsPosts().size());
         }
 
         // Test to check hide post
         @Test(timeout = 1000)
         public void testHidePost() {
-            Post post = PostsManager.createPost("john", "Hello World");
+            Post post = PostsManager.createPost("john", "Hello World","upvote.png");
             user.addMyPosts(post);
             user.hidePost(post.getPostID());
             Assert.assertTrue(user.getMyPosts().contains(post));
@@ -92,7 +92,7 @@ public class UserTest {
         @Test(timeout = 1000)
         public void testCreatePost() {
             user.setMyPosts(new ArrayList<>());
-            user.createPost("Hello World 2");
+            user.createPost("Hello World 2","upvote.png");
             Assert.assertEquals(1, user.getMyPosts().size());
             Assert.assertEquals("Hello World 2", user.getMyPosts().get(0).getContent());
         }
@@ -101,7 +101,7 @@ public class UserTest {
         @Test(timeout = 1000)
         public void testCreateComment() {
             user.setMyPosts(new ArrayList<>());
-            user.createPost("Hello World 3");
+            user.createPost("Hello World 3","upvote.png");
             Post post = user.getMyPosts().get(0);
             user.createComment(post.getPostID(), "Nice post!");
             Assert.assertEquals(1, post.getComments().size());
@@ -112,18 +112,18 @@ public class UserTest {
         @Test(timeout = 1000)
         public void testUpvotePost() {
             user.setMyPosts(new ArrayList<>());
-            Post post = PostsManager.createPost("john", "Hello World");
+            Post post = PostsManager.createPost("john", "Hello World","upvote.png");
             user.upvotePost(post.getPostID());
-            Assert.assertEquals(1, post.getUpvotes());
+            Assert.assertEquals(1, post.getVotes());
         }
 
         // Test to check downvote
         @Test(timeout = 1000)
         public void testDownvotePost() {
             user.setMyPosts(new ArrayList<>());
-            Post post = PostsManager.createPost("john", "Hello World");
+            Post post = PostsManager.createPost("john", "Hello World","upvote.png");
             user.downvotePost(post.getPostID());
-            Assert.assertEquals(1, post.getDownvotes());
+            Assert.assertEquals(-1, post.getVotes());
         }
 
         // Test to ensure that the class is declared properly

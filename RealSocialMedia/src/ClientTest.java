@@ -97,7 +97,7 @@ public class ClientTest {
         // Test to check creating posts through client
         @Test(timeout = 1000)
         public void testCreatePost() {
-            client.createPost("Test Post");
+            client.createPost("Test Post","upvote.png");
             String sentRequest = outStream.toString();
             Assert.assertTrue("Expected create post request to be sent", sentRequest.contains("7;Test Post"));
         }

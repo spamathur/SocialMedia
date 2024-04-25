@@ -40,7 +40,7 @@ public interface ClientInterface {
 
     void hidePost(String postID); //sends a request to hide posts
 
-    void createPost(String content); //sends a request to create a post
+    void createPost(String content, String img); //sends a request to create a post
 
     void createComment(String postID, String commentString); //sends a request to create a comment
 
