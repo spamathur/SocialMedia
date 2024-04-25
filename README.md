@@ -54,10 +54,10 @@ Phase 3 presentation submmitted by: ``
 Phase 3 Distribution:
 
 `Abhinav Padmanabhuni`
-Worked on designing and constructing GUI.
+Worked on designing and constructing GUI. Updated some previous files.
 
 `Chenbo Sun:`
-Worked on documentation of Readme.
+Worked on the documentation of Readme.
 
 `Sparsh Mathur:`
 Wrote report Part One and collected Part Two. Fixed previous test cases and interfaces to reflect changes from this phase.
@@ -66,7 +66,7 @@ Wrote report Part One and collected Part Two. Fixed previous test cases and inte
 Edited profile codes and updated the program
 
 `Christina Melnic:`
-Worked on search pane in Gui.
+Worked on the search pane in Gui.
 
 ## Run the code
 
