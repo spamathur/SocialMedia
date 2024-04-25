@@ -189,7 +189,8 @@ public class PostComponent extends JPanel {
     MouseAdapter mouseAdapter = new MouseAdapter() {
         @Override
         public void mouseClicked(MouseEvent e) {
-            MainGUIController.refresh("fullpost", new FullPostPane(post));
+            Post newPost = MainGUIController.client.findPost(post.getPostID());
+            MainGUIController.refresh("fullpost", new FullPostPane(newPost));
         }
 
         @Override

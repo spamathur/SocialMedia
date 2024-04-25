@@ -16,7 +16,7 @@ import java.net.Socket;
  */
 public class Server {
     public static void main(String[] args) {
-        try (ServerSocket serverSocket = new ServerSocket(4242)) {
+        try (ServerSocket serverSocket = new ServerSocket(4243)) {
             FileManager.readAll();
             while (true) {
                 System.out.println("Waiting to connect...");

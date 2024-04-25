@@ -27,7 +27,7 @@ public class Client {
 
     public Client() {
         try {
-            socket = new Socket("localhost", 4242);
+            socket = new Socket("localhost", 4243);
             bfr = new BufferedReader(new InputStreamReader(socket.getInputStream()));
             pw = new PrintWriter(socket.getOutputStream(), true);
             isConnected = true;
@@ -126,8 +126,13 @@ public class Client {
         return gson.fromJson(json, User.class);
     }
 
+    public Post findPost(String postID) {
+        sendRequest(String.format("20;%s", postID));
+        String json = getResponse();
+        return gson.fromJson(json, Post.class);
+    }
     public User findUser(String username) {
-        sendRequest(String.format("20;%s", username));
+        sendRequest(String.format("21;%s", username));
         String json = getResponse();
         return gson.fromJson(json, User.class);
     }

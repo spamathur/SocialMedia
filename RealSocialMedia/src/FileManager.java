@@ -1,7 +1,6 @@
-import java.io.File;
 import java.io.IOException;
 
-public class FileManager implements FileManagerInterface {
+public class FileManager {
     public static void readAll() throws IOException {
         CommentsManager.readComments();
         PostsManager.readPosts();

@@ -9,10 +9,6 @@ public class MainGUIController extends JFrame implements Runnable {
 
     public static Client client = new Client();
 
-    public static void main(String[] args) {
-        SwingUtilities.invokeLater(new MainGUIController());
-    }
-
     @Override
     public void run() {
 
@@ -22,9 +18,6 @@ public class MainGUIController extends JFrame implements Runnable {
                 client.closeConnection();
             }
         });
-
-        ImageIcon image = new ImageIcon("bee_dashboard.jpg");
-        this.setIconImage(image.getImage());
         this.setTitle("Buzz Board");
         this.setSize(450,800);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -47,5 +40,9 @@ public class MainGUIController extends JFrame implements Runnable {
         }
         MainGUIController.content.add(panel, identifier);
         MainGUIController.cardLayout.show(content, identifier);
+    }
+
+    public static void main(String[] args) {
+        SwingUtilities.invokeLater(new MainGUIController());
     }
 }

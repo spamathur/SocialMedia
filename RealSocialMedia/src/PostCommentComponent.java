@@ -222,8 +222,8 @@ public class PostCommentComponent extends JPanel {
                 User user = MyProfileComponent.user;
                 ArrayList<Comment> comments = post.getComments();
                 comments.add(new Comment(user.getUserName(), commentString, post.getCreator()));
-                //Post newPost = MainGUIController.client.findPost(post.getPostID());
-                MainGUIController.refresh("fullpost", new FullPostPane(post));
+                Post newPost = MainGUIController.client.findPost(post.getPostID());
+                MainGUIController.refresh("fullpost", new FullPostPane(newPost));
             }
             if (e.getSource() == hideButton){
                 MainGUIController.client.hidePost(post.getPostID());

@@ -100,8 +100,7 @@ public class MyProfileComponent extends JPanel {
                 MainGUIController.cardLayout.show(MainGUIController.content,"myPosts");
             }
             if (command.equals("button2")) {
-                MainGUIController.content.add(new EditProfilePane(), "editProfile");
-                MainGUIController.cardLayout.show(MainGUIController.content,"editProfile");
+
             }
 
         }

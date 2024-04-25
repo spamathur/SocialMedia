@@ -37,8 +37,10 @@ public class ClientHandler implements Runnable {
             while (!authSuccess) {
                 String inputLine = bfr.readLine();
                 System.out.println(inputLine);
-                if (inputLine == null || inputLine.isEmpty())
-                    continue;
+                if (inputLine == null || inputLine.isEmpty()) {
+                    System.out.println("Thread Ended");
+                    break;
+                }
 
                 ArrayList<String> authentication = new ArrayList<>(Arrays.asList(inputLine.split(";")));
                 int action = Integer.parseInt(authentication.remove(0));
@@ -68,8 +70,10 @@ public class ClientHandler implements Runnable {
             while (!endSession) {
                 String inputLine = bfr.readLine();
                 System.out.println(inputLine);
-                if (inputLine == null || inputLine.isEmpty())
-                    continue;
+                if (inputLine == null || inputLine.isEmpty()) {
+                    System.out.println("Thread Ended");
+                    break;
+                }
 
                 ArrayList<String> parameters = new ArrayList<>(Arrays.asList(inputLine.split(";")));
                 int command = Integer.parseInt(parameters.remove(0));
@@ -125,11 +129,19 @@ public class ClientHandler implements Runnable {
                         break;
                     case 18:
                         endSession = true;
+                        System.out.println("Thread ended");
+                        break;
                     case 19:
                         user.deleteComment(parameters.get(0), parameters.get(1));
+                        break;
                     case 20:
+                        Post postFound = PostsManager.findPost(parameters.get(0));
+                        pw.println(gson.toJson(postFound));
+                        break;
+                    case 21:
                         User userFound = user.findUser(parameters.get(0));
                         pw.println(gson.toJson(userFound));
+                        break;
                 }
                 FileManager.writeAll();
             }
