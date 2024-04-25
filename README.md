@@ -5,7 +5,7 @@ Authors: Abhinav Padmanabhuni, Chenbo Sun, Sparsh Mathur, Amrit Multani, Christi
 
 The link of this GitHub project is [https://github.com/spamathur/SocialMedia](https://github.com/spamathur/SocialMedia).
 
-Phase 1 submitted in Vocareum workspace by : `Abhinav Padmanabhuni`
+Phase 1 submitted on Vocareum workspace by : `Abhinav Padmanabhuni`
 
 Phase 1 Distribution: 
 
@@ -25,7 +25,7 @@ Worked on User and UserManager classes.
 Wrote interfaces and comments.
 
 
-Phase 2 submitted in Vocareum workspace by : `Abhinav Padmanabhuni`
+Phase 2 submitted on Vocareum workspace by : `Abhinav Padmanabhuni`
 
 Phase 2 Distribution: 
 
@@ -44,7 +44,10 @@ Wrote the ReadMe and helped with test cases.
 `Christina Melnic:`
 Wrote interfaces and helped with the ReadMe.
 
-Phase 3 submitted in Vocareum workspace by : ``
+
+Phase 3 codes submitted on Vocareum workspace by : ``
+
+Phase 3 report submitted on Brightspace by: ``
 
 Phase 3 Distribution:
 
