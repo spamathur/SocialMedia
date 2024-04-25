@@ -26,7 +26,7 @@ public interface UserInterface {
 
     void addMyPosts(Post post); //takes in a post, and adds it to the myPost in user class
 
-    void createPost(String content); //takes in a post from the PostManagement class and adds it to MyPost in user class
+    void createPost(String content, String img  ); //takes in a post from the PostManagement class and adds it to MyPost in user class
 
     void createComment(String postID, String commentString); //creates a comment
 
