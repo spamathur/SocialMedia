@@ -3,7 +3,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
-public class UsersManager {
+public class UsersManager implements UsersManagerInterface {
     private static final String FILENAME = "users.txt";
     private static List<User> usersList = Collections.synchronizedList(new ArrayList<>());
 
