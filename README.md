@@ -60,7 +60,7 @@ Worked on designing and constructing GUI.
 Worked on documentation of Readme.
 
 `Sparsh Mathur:`
-Wrote report Part One and collected Part Two.
+Wrote report Part One and collected Part Two. Fixed previous test cases and interfaces to reflect changes from this phase.
 
 `Amrit Multani:`
 Edited profile codes and updated the program
