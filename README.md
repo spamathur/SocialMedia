@@ -70,7 +70,9 @@ Worked on search pane in Gui.
 
 ## Run the code
 
-To run the code, open Main.java and execute it as your Java application's entry point. Inside Main.java, you will find some commented-out code snippets. Uncomment these lines to test various functionalities of the program.
+Before executing the code, ensure the GSON library is imported. Download the gson-2.10.1.jar file from [https://repo1.maven.org/maven2/com/google/code/gson/gson/2.10.1/](https://repo1.maven.org/maven2/com/google/code/gson/gson/2.10.1/) and add the downloaded file as a library in the IDE.
+
+To run the code, execute `Server.java` first to start the server. Then, run `MainGUIController.java` to start a client. Multiple clients could be handled at the same time. Make sure the server is started before executing the client.
 
 Following contents describe the main functions of the codes and brief explanations for key methods in each class.
 
@@ -93,8 +95,6 @@ This is the main entry point of the application. It demonstrates the usage of th
 All functionalities are tested using the following test classes: UserTest, UserManagerTest, PostManagerTest, PostTest, FileManagerTest, ClientTest, ClientHandlerTest, RunLocalTestCommentManager, and RunLocalTestComments. These test cases utilize JUnit 4 for execution.
 
 ### Make sure to import a GSON library before executing `ClientTest` and `ClientHandlerTest`.
-
-Before executing the ClientTest and ClientHandlerTest, ensure the GSON library is imported. Download the gson-2.10.1.jar file from [https://repo1.maven.org/maven2/com/google/code/gson/gson/2.10.1/](https://repo1.maven.org/maven2/com/google/code/gson/gson/2.10.1/) and add the downloaded file as a library in the IDE.
 
 
 # Phase 3 Classes:
