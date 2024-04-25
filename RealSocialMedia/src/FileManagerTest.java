@@ -55,7 +55,7 @@ public class FileManagerTest {
         public void testReadAndWriteAll() throws IOException, UserNameTakenException {
             User user = new User("john", "John", "Doe", "password", "profile.jpg");
             UsersManager.signUp(user);
-            Post post = PostsManager.createPost("john", "Hello world!");
+            Post post = PostsManager.createPost("john", "Hello world!","upvote.png");
             CommentsManager.createComment(post.getPostID(),"john", "Nice post!");
 
             FileManager.writeAll();
@@ -87,13 +87,13 @@ public class FileManagerTest {
 
             superinterfaces = clazz.getInterfaces();
 
-            Assert.assertTrue("Ensure that `Comment` is `public`!",
+            Assert.assertTrue("Ensure that `FileManager` is `public`!",
                     Modifier.isPublic(modifiers));
-            Assert.assertFalse("Ensure that `Comment` is NOT `abstract`!",
+            Assert.assertFalse("Ensure that `FileManager` is NOT `abstract`!",
                     Modifier.isAbstract(modifiers));
-            Assert.assertEquals("Ensure that `Comment` extends `Object`!",
+            Assert.assertEquals("Ensure that `FileManager` extends `Object`!",
                     Object.class, superclass);
-            Assert.assertEquals("Ensure that `Comment` implements one interfaces!",
+            Assert.assertEquals("Ensure that `FileManager` implements one interfaces!",
                     1, superinterfaces.length);
         }
     }
