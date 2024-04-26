@@ -355,7 +355,7 @@ This class provides functionality to read and write all data (users, posts, comm
 
 - `readAll()`: Reads all data from files.
 - `writeAll()`: Writes all data to files.
-- 
+
 ## User Class
 
 This class represents a user in the system. Each user has a unique username, a first name, a last name, a password, and a profile picture. Users can also have a list of friends, a list of blocked users, and a list of their own posts.
