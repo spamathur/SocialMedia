@@ -76,6 +76,8 @@ To run the code, execute `Server.java` first to start the server. Then, run `Mai
 
 **Make sure the server is started before executing the client.**
 
+***
+
 Following contents describe the main functions of the codes and brief explanations for key methods in each class.
 
 ## IO Functionality Tests:
@@ -96,7 +98,7 @@ This is the main entry point of the application. It demonstrates the usage of th
 
 All functionalities are tested using the following test classes: `UserTest`, `UserManagerTest`, `PostManagerTest`, `PostTest`, `FileManagerTest`, `ClientTest`, `ClientHandlerTest`, `RunLocalTestCommentManager`, and `RunLocalTestComments`. These test cases utilize JUnit 4 for execution.
 
-### Make sure to import a GSON library before executing `ClientTest` and `ClientHandlerTest`.
+** Make sure to import a GSON library before executing `ClientTest` and `ClientHandlerTest`.**
 
 
 # Phase 3 Classes:
