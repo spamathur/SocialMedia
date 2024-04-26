@@ -72,7 +72,9 @@ Worked on the presentation slides.
 
 Before executing the code, ensure the GSON library is imported. Download the `gson-2.10.1.jar` file from [https://repo1.maven.org/maven2/com/google/code/gson/gson/2.10.1/](https://repo1.maven.org/maven2/com/google/code/gson/gson/2.10.1/) and add the downloaded file as a library in the IDE.
 
-To run the code, execute `Server.java` first to start the server. Then, run `MainGUIController.java` to start a client. Multiple clients could be handled at the same time. Make sure the server is started before executing the client.
+To run the code, execute `Server.java` first to start the server. Then, run `MainGUIController.java` to start a client. Multiple clients could be handled at the same time.
+
+### Make sure the server is started before executing the client.
 
 Following contents describe the main functions of the codes and brief explanations for key methods in each class.
 
