@@ -82,9 +82,9 @@ Following contents describe the main functions of the codes and brief explanatio
 
 ## IO Functionality Tests:
 
-**It is important to note that Server.java must be running before ClientTest and ClientHandlerTest are executed.**
-
 I/O functionality is thoroughly tested within the `ClientTest` and `ClientHandlerTest` classes. Descriptions and testing methodologies are documented in the comments at the beginning of each test case, explaining what specific functionalities are tested.
+
+**It is important to note that Server.java must be running before ClientTest and ClientHandlerTest are executed.**
 
 ## Main Class
 
