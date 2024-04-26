@@ -76,6 +76,7 @@ To run the code, execute `Server.java` first to start the server. Then, run `Mai
 
 ### Make sure the server is started before executing the client.
 
+
 Following contents describe the main functions of the codes and brief explanations for key methods in each class.
 
 ## IO Functionality Tests:
