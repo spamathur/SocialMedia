@@ -39,7 +39,7 @@ public class ClientHandlerTest {
         public void testConstructor() throws IOException {
             Socket testSocket = null;
             try {
-                testSocket = new Socket("localhost", 4242);
+                testSocket = new Socket("localhost", 4243);
                 ClientHandler handler = new ClientHandler(testSocket);
 
                 // Access the clientSocket field using reflection
