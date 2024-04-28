@@ -47,7 +47,7 @@ Wrote interfaces and helped with the ReadMe.
 
 Phase 3 codes submitted on Vocareum workspace by : `Abhinav Padmanabhuni`
 
-Phase 3 report submitted on Brightspace by: `Sparsh Mathur`
+Phase 3 report submitted on Brightspace by: `Abhinav Padmanabhuni`
 
 Phase 3 presentation submmitted by: `Abhinav Padmanabhuni`
 
