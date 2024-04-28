@@ -1,5 +1,5 @@
 # Social Media News Feed
-This project creates a social media for posting and commenting. Users can sign up and login the social media and get their own accounts. Users can send text posts on the media, and they can follow other users to see their posts.
+This project creates a social media for posting and commenting. Users can sign up and login the social media and get their own accounts. Users can send text posts on the media, and they can follow other users to see their posts. Users can see the comments on their post by clicking on the post.
 
 Authors: Abhinav Padmanabhuni, Chenbo Sun, Sparsh Mathur, Amrit Multani, Christina Melnic
 
